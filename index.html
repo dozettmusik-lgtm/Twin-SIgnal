@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Twin Signal – Recording, Production, Mixing und Mastering in Ottweiler.">
+  <title>Twin Signal — Dein Sound. Deine Identität.</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#090909;--panel:#111;--panel2:#161616;--line:#292929;--text:#f2f2ef;--muted:#aaa;--silver:#c9c9c2;--accent:#deded7}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,sans-serif}body.modal-open{overflow:hidden}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min(1180px,calc(100% - 48px));margin:auto}.nav{position:fixed;z-index:40;top:0;left:0;width:100%;height:78px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(9,9,9,.84);backdrop-filter:blur(18px)}.nav .shell{height:100%;display:flex;align-items:center;justify-content:space-between}.brand{font-size:18px;font-weight:800;letter-spacing:.14em}.brand span{color:#777}.nav-links{display:flex;align-items:center;gap:30px;font-size:12px;font-weight:700;letter-spacing:.12em}.nav-links a:not(.nav-book){color:#bbb}.nav-links a:hover{color:#fff}.nav-book,.primary{height:48px;padding:0 21px;border:1px solid var(--text);background:var(--text);color:#0a0a0a;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;letter-spacing:.12em}.nav-book{height:42px}.outline{background:transparent;color:var(--text)}
+    .hero{min-height:760px;height:100vh;position:relative;display:flex;align-items:flex-end;overflow:hidden;background:#111}.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 58%;filter:grayscale(1) contrast(1.08) brightness(.55)}.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.2) 75%),linear-gradient(0deg,#090909 0%,transparent 25%)}.hero-content{position:relative;z-index:2;padding-bottom:86px}.eyebrow{font-family:"DM Mono",monospace;text-transform:uppercase;color:#aaa;font-size:11px;letter-spacing:.18em}.hero h1{font-size:clamp(62px,9vw,132px);line-height:.82;margin:22px 0 28px;letter-spacing:-.075em;max-width:980px}.hero h1 span{display:block;font-size:.42em;letter-spacing:.02em;margin-top:24px}.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end}.hero-copy{max-width:540px;color:#ddd;font-size:18px;line-height:1.65}.hero-actions{display:flex;gap:10px;margin-top:28px}.hero-index{font-family:"DM Mono";font-size:11px;color:#aaa;text-align:right;line-height:2}
+    section{padding:110px 0}.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:46px}.section-head h2{font-size:clamp(42px,6vw,76px);letter-spacing:-.055em;line-height:.95;margin:12px 0 0}.section-head p{max-width:410px;color:var(--muted);line-height:1.7}.about-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:18px}.about-image{height:540px;object-fit:cover;filter:grayscale(1);width:100}.about-copy{background:var(--panel);border:1px solid var(--line);padding:48px;display:flex;flex-direction:column;justify-content:space-between}.about-copy h3{font-size:38px;letter-spacing:-.04em;line-height:1.08;margin:0}.about-copy p{color:#aaa;line-height:1.8}.text-link{border-bottom:1px solid #777;padding-bottom:6px;font-size:12px;font-weight:800;letter-spacing:.12em}
+    .services{background:#0d0d0d}.service-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.service{min-height:270px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px;display:flex;flex-direction:column;justify-content:space-between}.service-no{font-family:"DM Mono";color:#777;font-size:11px}.service h3{font-size:22px;margin:0 0 12px}.service p{color:#999;line-height:1.6;font-size:14px}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.price-card{border:1px solid var(--line);background:var(--panel);padding:34px;min-height:460px;display:flex;flex-direction:column}.price-card.featured{border-color:#aaa}.tag{width:max-content;border:1px solid #777;padding:7px 9px;font-family:"DM Mono";font-size:9px;letter-spacing:.12em}.price-card h3{font-size:24px;margin:48px 0 4px}.price{font-size:50px;font-weight:700;letter-spacing:-.06em}.price span{font-size:12px;color:#888}.price-card ul{list-style:none;padding:0;margin:26px 0}.price-card li{padding:9px 0;border-bottom:1px solid #242424;color:#bbb;font-size:14px}.price-card .primary{margin-top:auto;width:100%}
+    .beat-toolbar{display:flex;gap:8px;margin-bottom:20px}.filter{height:40px;border:1px solid var(--line);background:transparent;color:#aaa;padding:0 14px;font-size:12px}.filter.active{background:#eee;color:#111}.beat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.beat-card{border:1px solid var(--line);background:#111}.beat-cover{height:260px;position:relative;overflow:hidden}.beat-cover img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.78);transition:.5s}.beat-card:hover .beat-cover img{transform:scale(1.03)}.beat-play{position:absolute;left:20px;bottom:20px;width:54px;height:54px;border-radius:50%;border:0;background:#eee;color:#111;font-size:16px}.beat-play:disabled{opacity:.45;cursor:not-allowed}.beat-info{padding:20px}.beat-row{display:flex;justify-content:space-between;align-items:start}.beat-info h3{margin:0;font-size:18px}.beat-meta{color:#888;font-family:"DM Mono";font-size:10px;margin-top:8px}.favorite{border:0;background:transparent;color:#777;font-size:20px}.favorite.active{color:#fff}.beat-progress{height:3px;background:#333;margin-top:18px;overflow:hidden}.beat-progress i{display:block;width:0;height:100%;background:#ddd}.exclusive{margin-top:14px;border:1px solid var(--line);padding:42px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(100deg,#151515,#0d0d0d)}
+    .process{background:#e8e8e3;color:#111}.process-grid{display:grid;grid-template-columns:.8fr 1.2fr}.process h2{font-size:64px;letter-spacing:-.06em;line-height:.95;margin:12px 0}.steps{border-top:1px solid #aaa}.step{display:grid;grid-template-columns:70px 1fr 40px;padding:24px 0;border-bottom:1px solid #aaa}.step-no{font-family:"DM Mono";font-size:11px}.step h3{margin:0;font-size:21px}.step b{font-size:18px}
+    .contact-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px}.contact-grid h2{font-size:64px;letter-spacing:-.06em;line-height:.95;margin:12px 0}.contact-grid address{color:#aaa;font-style:normal;line-height:1.8}.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:8px}.field.full{grid-column:1/-1}.field label{font-family:"DM Mono";font-size:10px;text-transform:uppercase;color:#888}.field input,.field textarea,.field select{border:1px solid var(--line);background:#111;color:#fff;padding:15px;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:#aaa}.field textarea{height:140px;resize:vertical}.contact-form .primary{width:max-content;margin-top:8px}.honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+    footer{border-top:1px solid var(--line);padding:38px 0}footer .shell{display:flex;justify-content:space-between;color:#777;font-size:11px}.footer-links{display:flex;gap:20px}
+    .modal{position:fixed;z-index:100;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-card{width:min(820px,100%);max-height:calc(100vh - 40px);overflow:auto;background:#111;border:1px solid #333}.modal-head{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px}.modal-head strong{letter-spacing:.12em;font-size:13px}.close{border:0;background:transparent;color:#aaa;font-size:24px}.wizard{padding:26px}.steps-ui{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:28px}.step-ui{height:3px;background:#333}.step-ui.active{background:#eee}.panel-step{display:none}.panel-step.active{display:block}.option-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.option{border:1px solid var(--line);background:#0c0c0c;padding:18px;display:flex;justify-content:space-between;text-align:left;color:#fff}.option.selected{border-color:#eee;background:#191919}.option small{display:block;color:#888;margin-top:5px}.option b{font-size:15px}.wizard-footer{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}.summary{border:1px solid var(--line);padding:20px;background:#0c0c0c}.summary-row{display:flex;justify-content:space-between;padding:8px 0;color:#aaa}.summary-row.total{border-top:1px solid var(--line);color:#fff;font-size:20px;margin-top:8px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.day,.time{border:1px solid var(--line);background:#0c0c0c;color:#aaa;padding:12px 6px}.day.selected,.time.selected{background:#eee;color:#111}.times{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}.notice{border:1px solid #444;background:#171717;padding:13px;color:#aaa;font-size:13px;line-height:1.6}.status-toast{position:fixed;z-index:150;right:24px;bottom:24px;background:#eee;color:#111;padding:15px 18px;font-size:13px;font-weight:700;transform:translateY(100px);transition:.3s}.status-toast.show{transform:translateY(0)}
+    .account-button{height:42px;border:1px solid var(--line);background:#111;color:#fff;padding:0 14px;font-size:11px;font-weight:800;letter-spacing:.08em}.portal-modal{position:fixed;z-index:110;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:20px}.portal-modal.open{display:flex}.auth-card{width:min(430px,100%);background:#111;border:1px solid #333}.auth-head,.portal-head{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line)}.auth-head strong,.portal-head strong{letter-spacing:.12em;font-size:12px}.auth-tabs{display:flex;border-bottom:1px solid var(--line)}.auth-tab{flex:1;height:48px;border:0;border-right:1px solid var(--line);background:#0d0d0d;color:#777}.auth-tab.active{background:#191919;color:#fff}.auth-form{padding:24px}.auth-form .field{margin-bottom:14px}.auth-form .primary{width:100%;margin-top:6px}.auth-note{color:#777;font-size:11px;line-height:1.6;margin-top:14px}.portal{width:min(1180px,calc(100% - 32px));height:min(760px,calc(100vh - 40px));background:#0d0d0d;border:1px solid #333;display:grid;grid-template-columns:220px 280px 1fr}.portal-sidebar{border-right:1px solid var(--line);padding:18px}.profile-mini{display:flex;align-items:center;gap:10px;padding:10px 0 20px}.avatar{width:42px;height:42px;border-radius:50%;border:1px solid #444;background:#222;object-fit:cover}.portal-nav{display:flex;flex-direction:column;gap:4px}.portal-nav button{height:42px;border:0;background:transparent;color:#999;text-align:left;padding:0 12px}.portal-nav button.active{background:#202020;color:#fff}.customer-panel{border-right:1px solid var(--line);overflow:hidden}.panel-title{height:68px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px}.customer-list{height:calc(100% - 68px);overflow:auto}.customer-row{width:100%;height:68px;border:0;border-bottom:1px solid #202020;background:transparent;color:#fff;display:flex;align-items:center;gap:10px;padding:10px 16px;text-align:left}.customer-row.active{background:#191919}.customer-row small{display:block;color:#777;margin-top:3px}.chat-panel{display:grid;grid-template-rows:68px 1fr 72px;min-width:0}.chat-header{border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px}.chat-header-actions{display:flex;gap:6px}.icon-button{width:38px;height:38px;border:1px solid var(--line);background:#111;color:#fff}.messages{padding:18px;overflow:auto}.message{max-width:70%;padding:11px 13px;border-radius:8px;background:#1b1b1b;margin:8px 0;font-size:13px}.message.me{margin-left:auto;background:#e7e7e2;color:#111}.message-meta{display:block;color:#777;font-size:9px;margin-top:5px}.chat-compose{border-top:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:12px}.chat-compose input{flex:1;height:46px;border:1px solid var(--line);background:#111;color:#fff;padding:0 12px}.chat-compose button{height:46px}    .profile-pane,.beats-admin,.customers-admin{grid-column:2/4;padding:20px;overflow:auto}.profile-pane img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:1px solid #444}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.beat-admin-row{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:12px 0}.danger{border:1px solid #633;background:#1c1111;color:#d99}.call-modal{position:fixed;z-index:120;inset:0;background:#080808;display:none}.call-modal.open{display:grid;grid-template-rows:64px 1fr 90px}.call-header{display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--line)}.call-stage{display:flex;align-items:center;justify-content:center;position:relative}.call-video{width:min(720px,80%);height:min(480px,70vh);object-fit:cover;background:#151515;border:1px solid #333}.call-controls{display:flex;align-items:center;justify-content:center;gap:10px}.call-controls select{height:44px;background:#111;color:#fff;border:1px solid var(--line);padding:0 10px}.end-call{width:54px;height:54px;border-radius:50%;border:0;background:#a32d2d;color:#fff}.member-empty{height:220px;border:1px dashed #333;display:flex;align-items:center;justify-content:center;color:#777;text-align:center;padding:20px}
+    .camera-quality{display:flex;flex-direction:column;gap:4px;color:#888;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.06em}.camera-quality select{min-width:130px}.camera-quality small{font-size:9px;letter-spacing:0;color:#aaa}    .call-modal.open{grid-template-rows:64px minmax(0,1fr) auto}.call-stage{overflow:auto;padding:16px}.call-streams{width:100%;height:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:12px;align-content:center}.call-streams:empty{display:none}.call-tile{min-height:180px;position:relative;background:#111;border:1px solid #333;display:flex;align-items:center;justify-content:center;overflow:hidden}.call-tile video{width:100%;height:100%;min-height:180px;object-fit:cover}.call-tile strong{position:absolute;z-index:1;left:10px;bottom:10px;padding:5px 8px;background:rgba(0,0,0,.7);font-size:11px}.call-video{position:absolute;z-index:2;right:22px;bottom:22px;width:min(220px,32vw);height:min(150px,22vh);object-fit:cover}.call-empty{color:#888;text-align:center}.call-controls{padding:10px 16px 14px;flex-wrap:wrap;max-height:190px;overflow:auto}.call-participants{width:100%;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;color:#aaa;font-size:11px}.call-participant{border:1px solid #333;padding:5px 8px}.call-participant button{margin-left:8px;border:0;background:transparent;color:#e88}.call-controls button:not(.end-call){height:40px;border:1px solid #444;background:#111;color:#fff;padding:0 12px}.incoming-call{position:fixed;z-index:140;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.88);padding:20px}.incoming-call.open{display:flex}.incoming-card{width:min(420px,100%);border:1px solid #444;background:#111;padding:26px}.incoming-card h2{margin:0 0 10px}.incoming-actions{display:flex;gap:10px;margin-top:22px}.incoming-actions button{flex:1}
+    @media(max-width:900px){.nav-links a:not(.nav-book){display:none}.account-button{padding:0 8px}.portal{grid-template-columns:180px 220px 1fr}.shell{width:min(100% - 32px,1180px)}.hero{min-height:680px}.hero-bottom{display:block}.hero-index{display:none}.about-grid,.process-grid,.contact-grid{grid-template-columns:1fr}.about-image{height:380px}.service-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid,.beat-grid{grid-template-columns:1fr}.beat-cover{height:320px}.section-head{display:block}.section-head p{margin-top:18px}.exclusive{display:block}.exclusive .primary{margin-top:24px}.contact-grid{gap:40px}}
+    @media(max-width:600px){section{padding:76px 0}.nav{height:68px}.brand{font-size:14px}.nav-book{height:38px;padding:0 12px}.hero h1{font-size:56px}.hero h1 span{font-size:.38em}.hero-copy{font-size:15px}.hero-actions{flex-direction:column}.hero-actions .primary{width:100%}.service-grid{grid-template-columns:1fr}.service{min-height:220px}.about-copy{padding:28px}.price-card{min-height:430px}.beat-toolbar{overflow-x:auto}.filter{white-space:nowrap}.beat-cover{height:280px}.process h2,.contact-grid h2{font-size:48px}.contact-form{grid-template-columns:1fr}.field.full{grid-column:auto}.option-grid{grid-template-columns:1fr}.times{grid-template-columns:repeat(2,1fr)}footer .shell{display:block}.footer-links{margin-top:16px} }
+    @media(max-width:600px){.account-button{display:inline-flex;align-items:center;justify-content:center;height:38px;font-size:9px;padding:0 8px}.nav-links{gap:6px}.nav-links a:not(.nav-book){display:none}.nav-book{padding:0 9px;font-size:9px}.portal-modal{padding:0}.portal{width:100%;height:100%;grid-template-columns:74px 1fr}.portal-sidebar{padding:8px}.profile-mini{justify-content:center}.profile-mini>div{display:none}.portal-nav button{font-size:0;padding:0;text-align:center}.portal-nav button::first-letter{font-size:13px}.customer-panel{display:none!important}.chat-panel{grid-column:2}.chat-header-actions{gap:3px}.chat-compose{padding:8px}.chat-compose button{padding:0 10px;font-size:10px}.message{max-width:85%}.admin-grid{grid-template-columns:1fr}.call-controls{flex-wrap:wrap}.call-controls select{max-width:45%}.call-video{width:94%;height:55vh}}
+    .chat-contact-select{display:none;min-width:0;max-width:135px;height:36px;border:1px solid var(--line);background:#111;color:#fff;padding:0 6px;font-size:10px}
+    @media(max-width:600px){.camera-quality{max-width:45%}.camera-quality select{min-width:0;width:100%}.chat-contact-select{display:block;flex:1}.chat-header{gap:6px;padding:0 8px}.chat-header>strong{font-size:11px;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.chat-header-actions .icon-button{width:32px;height:34px}}
+    .cookie-banner{position:fixed;z-index:200;left:24px;right:24px;bottom:24px;border:1px solid #444;background:#111;padding:18px 20px;display:none;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 20px 60px rgba(0,0,0,.5)}.cookie-banner.open{display:flex}.cookie-banner p{margin:0;color:#aaa;font-size:12px;line-height:1.6;max-width:700px}.cookie-actions{display:flex;gap:8px;flex-shrink:0}.cookie-actions button{height:42px;border:1px solid #555;background:#111;color:#fff;padding:0 14px;font-size:11px;font-weight:800}.cookie-actions .accept{background:#eee;color:#111;border-color:#eee}.legal-modal{position:fixed;z-index:210;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:20px}.legal-modal.open{display:flex}.legal-card{width:min(760px,100%);max-height:calc(100vh - 40px);overflow:auto;border:1px solid #333;background:#111}.legal-content{padding:28px;color:#bbb;line-height:1.75}.legal-content h2{color:#fff;font-size:34px;margin-top:0}.legal-content h3{color:#fff;margin-bottom:6px}.legal-content p{font-size:14px}.cookie-settings-row{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:12px 0}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="shell">
+      <a class="brand" href="#">TWIN <span>SIGNAL</span></a>
+      <div class="nav-links">
+        <a href="#studio">STUDIO</a><a href="#services">LEISTUNGEN</a><a href="#beats">BEATS</a><a href="#contact">KONTAKT</a>
+        <button class="account-button" id="openAuth" title="Chat und Telefonie öffnen">CHAT &amp; ANRUFE</button>
+        <a class="nav-book" href="#booking" data-open-booking>SESSION BUCHEN</a>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <img class="hero-bg" src="/IMG/WhatsApp%20Image%202026-11-18%20at%2018.12.33%20(1).jpeg" alt="Twin Signal Recording-Mikrofon und Studio-Setup">
+      <div class="shell hero-content">
+        <div class="eyebrow">OTTWEILER / SAARLAND</div>
+        <h1>TWIN SIGNAL <span>DEIN SOUND. DEINE IDENTITÄT.</span></h1>
+        <div class="hero-bottom">
+          <div>
+            <p class="hero-copy">Von der ersten Aufnahme bis zum fertigen Release. Wir bringen deine musikalische Vision auf das nächste Level.</p>
+            <div class="hero-actions">
+              <button class="primary" data-open-booking>SESSION BUCHEN</button>
+              <a class="primary outline" href="#beats">BEATS ENTDECKEN</a>
+            </div>
+          </div>
+          <div class="hero-index">MIXING / MASTERING<br>VOCAL RECORDING<br>BEATMAKING</div>
+        </div>
+      </div>
+    </header>
+    <section id="studio">
+      <div class="shell">
+        <div class="section-head"><div><div class="eyebrow">01 / DAS STUDIO</div><h2>WACHSE<br>MIT UNS.</h2></div><p>Twin Signal befindet sich im Aufbau – mit einem klaren Ziel: professionelle Produktionen für Künstler aus jedem Genre.</p></div>
+        <div class="about-grid">
+          <img class="about-image" src="/IMG/WhatsApp%20Image%202026-11-18%20at%2018.12.33%20(2).jpeg" alt="Keyboard und Instrumente im Twin Signal Studio">
+          <div class="about-copy"><div><div class="eyebrow">AUFBAU-PHASE</div><h3>Jedes Projekt macht das Studio besser.</h3></div><p>Ein Teil jeder Produktion wird direkt in bessere Technik, Raumoptimierung und hochwertige Arbeitsprozesse investiert. Das macht unsere Entwicklung sichtbar – und deinen Sound professioneller.</p><a class="text-link" href="#services">UNSERE LEISTUNGEN</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="services" id="services">
+      <div class="shell">
+        <div class="section-head"><div><div class="eyebrow">02 / LEISTUNGEN</div><h2>VON DER IDEE<br>ZUM RELEASE.</h2></div></div>
+        <div class="service-grid">
+          <article class="service"><span class="service-no">01</span><div><h3>Recording</h3><p>Vocal, Rap und Band Recording mit klarer Führung und professionellem Workflow.</p></div></article>
+          <article class="service"><span class="service-no">02</span><div><h3>Production</h3><p>Hip-Hop, Trap, Drill, Pop und individuelle Musikproduktion für deinen Sound.</p></div></article>
+          <article class="service"><span class="service-no">03</span><div><h3>Mixing</h3><p>Präzise Dynamik, Tiefe und Balance – abgestimmt auf dein Genre und deine Vision.</p></div></article>
+          <article class="service"><span class="service-no">04</span><div><h3>Mastering</h3><p>Der letzte Schliff für Streaming, Release und eine konsistente Lautheit.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section id="packages">
+      <div class="shell">
+        <div class="section-head"><div><div class="eyebrow">03 / STUDIOANGEBOTE</div><h2>PAKETE.</h2></div><p>Alle Songpreise gelten pro Song. Zusatzleistungen werden transparent mit dem Gesamtpreis berechnet.</p></div>
+        <div class="pricing-grid">
+          <article class="price-card"><div class="tag">STARTE PROFESSIONELL</div><h3>STARTER PACKAGE</h3><div class="price">50 €</div><ul><li>2 Stunden Vocal Recording</li><li>Recording Engineer inklusive</li><li>Standard Mixing & Mastering Chain</li><li>WAV & MP3 Export</li><li>Einfache Anpassungen</li></ul><button class="primary" data-package="Starter Package" data-price="50" data-stripe="https://buy.stripe.com/fZueVc3b12mtdJCgYA1VK09" data-open-booking>SICHER BUCHEN</button></article>
+          <article class="price-card featured"><div class="tag">EMPFOHLEN</div><h3>ARTIST PACKAGE</h3><div class="price">149 €</div><ul><li>2 Stunden Vocal Recording</li><li>Vocal Editing & individuelles Mixing</li><li>Individuelles Mastering</li><li>Effekte, Hall und Delay</li><li>2 Korrekturrunden</li></ul><button class="primary" data-package="Artist Package" data-price="149" data-stripe="https://buy.stripe.com/bJe00ieTJbX36hafUw1VK0a" data-open-booking>SICHER BUCHEN</button></article>
+          <article class="price-card"><div class="tag">FULL SERVICE</div><h3>SIGNATURE PACKAGE</h3><div class="price">349 €</div><ul><li>2 Stunden Vocal Recording</li><li>Backing-Vocals & Adlibs</li><li>Externe Mix- & Mastering-Profis</li><li>Vocal Editing & Vorbereitung</li><li>2 Korrekturrunden</li></ul><button class="primary" data-package="Signature Package" data-price="349" data-stripe="https://buy.stripe.com/14A7sK7rh7GN7le9w81VK0b" data-open-booking>SICHER BUCHEN</button></article>
+        </div>
+      </div>
+    </section>
+    <section id="beats" style="background:#0d0d0d">
+      <div class="shell">
+        <div class="section-head"><div><div class="eyebrow">04 / TWIN SIGNAL BEAT LIBRARY</div><h2>FIND YOUR<br>SOUND.</h2></div></div>
+        <div class="beat-toolbar"><button class="filter active" data-filter="all">ALLE</button><button class="filter" data-filter="Trap">TRAP</button><button class="filter" data-filter="Drill">DRILL</button><button class="filter" data-filter="Rage">RAGE</button><button class="filter" data-filter="Melodic Rap">MELODIC</button><button class="filter" data-filter="R&B">R&B</button></div>
+        <div class="beat-grid" id="beatGrid"></div>
+        <div class="exclusive"><div><div class="eyebrow">EXCLUSIVE BEATS — ON REQUEST</div><h3 style="font-size:32px;margin:12px 0">Dein eigener Sound.</h3><p style="color:#aaa;max-width:620px">Du suchst einen individuellen Sound für dein Projekt? Frage deinen exklusiven Beat direkt bei Twin Signal an.</p></div><button class="primary outline" data-open-exclusive>ANFRAGE STARTEN</button></div>
+      </div>
+    </section>
+    <section class="process">
+      <div class="shell process-grid">
+        <div><div class="eyebrow">05 / DER ABLAUF</div><h2>YOUR<br>SESSION.</h2></div>
+        <div class="steps">
+          <div class="step"><span class="step-no">01</span><h3>Angebot auswählen</h3><b>+</b></div><div class="step"><span class="step-no">02</span><h3>Beat wählen</h3><b>+</b></div><div class="step"><span class="step-no">03</span><h3>Termin reservieren</h3><b>+</b></div><div class="step"><span class="step-no">04</span><h3>Projekt beschreiben</h3><b>+</b></div><div class="step"><span class="step-no">05</span><h3>Sicher bezahlen</h3><b>+</b></div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="shell contact-grid">
+        <div><div class="eyebrow">06 / KONTAKT</div><h2>LET'S MAKE<br>IT REAL.</h2><address>TWIN SIGNAL<br>Brühlstraße 12<br>66564 Ottweiler<br>Deutschland<br><a href="mailto:dozettmusik@gmail.com">dozettmusik@gmail.com</a><br><a href="tel:+4915565305520">+49 15565 305520</a></address></div>
+        <form class="contact-form" id="contactForm">
+          <div class="field"><label>Name</label><input name="name" required></div><div class="field"><label>Betreff</label><input name="subject" required></div><div class="field"><label>Projektart</label><select name="project"><option>Recording</option><option>Mixing / Mastering</option><option>Beat-Anfrage</option><option>Zusammenarbeit</option></select></div><div class="field full"><label>Nachricht</label><textarea name="message" required></textarea></div><input class="honeypot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="field full"><div id="contactCaptcha"></div></div><button class="primary" type="submit">ANFRAGE SENDEN</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell"><div>© 2026 TWIN SIGNAL</div><div class="footer-links"><button class="text-link" data-legal="impressum" style="background:none;color:#777;border:0">IMPRESSUM</button><button class="text-link" data-legal="datenschutz" style="background:none;color:#777;border:0">DATENSCHUTZ</button><button class="text-link" data-legal="agb" style="background:none;color:#777;border:0">AGB</button><button class="text-link" data-legal="widerruf" style="background:none;color:#777;border:0">WIDERRUF</button><button class="text-link" data-cookie-settings style="background:none;color:#777;border:0">COOKIE-EINSTELLUNGEN</button></div></div></footer>
+  <div class="modal" id="bookingModal" aria-hidden="true">
+    <div class="modal-card"><div class="modal-head"><strong>SESSION BUCHEN</strong><button class="close" data-close-modal aria-label="Schließen">×</button></div><div class="wizard">
+      <div class="steps-ui"><i class="step-ui active"></i><i class="step-ui"></i><i class="step-ui"></i><i class="step-ui"></i><i class="step-ui"></i></div>
+      <div class="panel-step active" data-step="0"><div class="eyebrow">SCHRITT 01</div><h2>ANGEBOT AUSWÄHLEN</h2><div class="option-grid" id="packageOptions"></div></div>
+      <div class="panel-step" data-step="1"><div class="eyebrow">SCHRITT 02</div><h2>BEAT AUSWÄHLEN</h2><div class="option-grid" id="beatOptions"></div></div>
+      <div class="panel-step" data-step="2"><div class="eyebrow">SCHRITT 03</div><h2>TERMIN AUSWÄHLEN</h2><div class="calendar" id="calendar"></div><div class="times" id="times"></div></div>
+      <div class="panel-step" data-step="3"><div class="eyebrow">SCHRITT 04</div><h2>PROJEKTINFORMATIONEN</h2><div class="contact-form"><div class="field"><label>Künstlername</label><input id="artistName"></div><div class="field"><label>Musikrichtung</label><select id="genre"><option>Rap / Hip-Hop</option><option>Trap</option><option>Drill</option><option>Pop</option><option>Rock / Metal</option><option>R&B</option></select></div><div class="field full"><label>Projektbeschreibung</label><textarea id="projectDescription"></textarea></div></div></div>
+      <div class="panel-step" data-step="4"><div class="eyebrow">SCHRITT 05</div><h2>ZUSAMMENFASSUNG</h2><div class="summary" id="summary"></div><p class="notice">Die Zahlung erfolgt über den sicheren Stripe-Checkout-Link des gewählten Pakets.</p></div>
+      <div class="wizard-footer"><button class="primary outline" id="prevStep">ZURÜCK</button><button class="primary" id="nextStep">WEITER</button></div>
+    </div></div>
+  </div>
+  <div class="modal" id="exclusiveModal" aria-hidden="true"><div class="modal-card"><div class="modal-head"><strong>EXCLUSIVE BEAT ANFRAGEN</strong><button class="close" data-close-exclusive>×</button></div><form class="wizard contact-form" id="exclusiveForm"><div class="field"><label>Künstlername</label><input name="artist" required></div><div class="field"><label>Genre</label><input name="genre" required></div><div class="field"><label>Gewünschter Sound</label><input name="sound" required></div><div class="field"><label>Budget (optional)</label><input name="budget"></div><div class="field full"><label>Referenzsongs</label><input name="references"></div><div class="field full"><label>Projektbeschreibung</label><textarea name="description" required></textarea></div><input class="honeypot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="field full"><div id="exclusiveCaptcha"></div></div><button class="primary" type="submit">ANFRAGE SENDEN</button></form></div></div>
+  <div class="portal-modal" id="authModal" aria-hidden="true">
+    <div class="auth-card">
+      <div class="auth-head"><strong>TWIN SIGNAL CHAT &amp; ANRUFE</strong><button class="close" data-close-auth>×</button></div>
+      <div class="auth-tabs"><button class="auth-tab active" data-auth-tab="login">ANMELDEN</button><button class="auth-tab" data-auth-tab="register">REGISTRIEREN</button><button class="auth-tab" data-auth-tab="admin">ADMIN</button></div>
+      <form class="auth-form" id="authForm">
+        <div class="field" id="authEmailField" style="display:none"><label>E-Mail</label><input type="email" id="authEmail" autocomplete="email"></div>
+        <div class="field" id="setupKeyField" style="display:none"><label id="adminCodeLabel">Einrichtungs-Code</label><input type="password" id="adminSetupKey" autocomplete="off"></div>
+        <div class="field"><label id="authUsernameLabel">Benutzername oder E-Mail</label><input id="authUsername" required autocomplete="username"></div>
+        <div class="field"><label>Passwort</label><input type="password" id="authPassword" minlength="6" required autocomplete="current-password"></div>
+        <input class="honeypot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="field" id="registerCaptcha" style="display:none"></div>
+        <button class="primary" type="submit" id="authSubmit">ANMELDEN</button>
+        <div class="auth-note">Mitgliederkonten, Nachrichten und Beats werden serverseitig gespeichert. Audio- und Videoanrufe verwenden WebRTC; Mikrofon- und Kamerazugriff erfolgen nur nach Ihrer Zustimmung.</div>
+      </form>
+    </div>
+  </div>
+  <div class="portal-modal" id="portalModal" aria-hidden="true">
+    <div class="portal">
+      <aside class="portal-sidebar">
+        <div class="profile-mini"><img class="avatar" id="currentAvatar" alt=""><div><strong id="currentName"></strong><small id="currentRole" style="display:block;color:#777;margin-top:3px"></small></div></div>
+        <nav class="portal-nav" id="portalNav"></nav>
+      </aside>
+      <aside class="customer-panel" id="customerPanel"><div class="panel-title"><strong>MITGLIEDER</strong><span id="customerCount" class="eyebrow"></span></div><div class="customer-list" id="customerList"></div></aside>
+      <main class="chat-panel" id="chatPanel">
+        <header class="chat-header"><strong id="chatName">Nachrichten</strong><select class="chat-contact-select" id="chatContactSelect" aria-label="Gesprächspartner auswählen"></select><div class="chat-header-actions"><button class="icon-button" id="deleteChat" title="Gesamten Chatverlauf löschen" style="display:none">⌫</button><button class="icon-button" id="startAudio" title="Audioanruf">◖</button><button class="icon-button" id="startVideo" title="Videoanruf">▣</button></div></header>
+        <div class="messages" id="messages"></div>
+        <form class="chat-compose" id="chatForm"><input id="chatInput" placeholder="Nachricht schreiben..." autocomplete="off"><button class="primary" type="submit">SENDEN</button></form>
+      </main>
+    </div>
+  </div>
+  <div class="call-modal" id="callModal">
+    <header class="call-header"><strong id="callTitle">ANRUF</strong><button class="close" id="closeCall">×</button></header>
+    <div class="call-stage"><div class="call-streams" id="callStreams"></div><div class="call-empty" id="callEmpty">Warte auf weitere Teilnehmer …</div><video class="call-video" id="callVideo" autoplay playsinline muted></video></div>
+    <div class="call-controls"><select id="audioDevices" aria-label="Audiogerät"></select><select id="videoDevices" aria-label="Kameragerät"></select><label class="camera-quality" id="cameraQualityControl" style="display:none"><span>KAMERAQUALITÄT</span><select id="videoQuality" aria-label="Kameraqualität"><option value="auto">Auto</option><option value="480">480p</option><option value="720">720p</option><option value="1080" selected>1080p</option><option value="1440">1440p</option><option value="2160">4K</option></select><small id="qualityStatus">Wird von der Kamera begrenzt</small></label><select id="callInviteSelect" aria-label="Mitglied hinzufügen"></select><button id="inviteCallButton" type="button">HINZUFÜGEN</button><button id="shareCallWhatsapp" type="button" disabled>LINK PER WHATSAPP</button><button id="toggleMute" type="button" aria-pressed="false">MIKROFON STUMMSCHALTEN</button><button class="end-call" id="endCall" aria-label="Anruf beenden">■</button><div class="call-participants" id="callParticipants" aria-live="polite"></div></div>
+  </div>
+  <div class="incoming-call" id="incomingCall" aria-hidden="true"><div class="incoming-card"><h2>EINGEHENDER ANRUF</h2><p id="incomingCallText">Ein Mitglied lädt dich zum Anruf ein.</p><div class="incoming-actions"><button class="primary" id="acceptIncoming">ANNEHMEN</button><button class="primary outline" id="declineIncoming">ABLEHNEN</button></div></div></div>
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie-Einstellungen">
+    <p><strong>Cookies & Datenschutz</strong><br>Wir verwenden technisch notwendige Cookies für Anmeldung und Sicherheitsfunktionen. Optional können Analyse- und Marketing-Cookies zugestimmt werden. Ihre Auswahl kann jederzeit geändert werden.</p>
+    <div class="cookie-actions"><button data-cookie-reject>Nur notwendige</button><button data-cookie-settings>Details</button><button class="accept" data-cookie-accept>Alle akzeptieren</button></div>
+  </div>
+  <div class="legal-modal" id="legalModal" aria-hidden="true">
+    <div class="legal-card">
+      <div class="modal-head"><strong id="legalTitle">RECHTLICHE HINWEISE</strong><button class="close" data-close-legal aria-label="Schließen">×</button></div>
+      <div class="legal-content" id="legalContent"></div>
+    </div>
+  </div>
+  <div class="status-toast" id="toast"></div>
+  <script>
+    let beats=[],activePreview=null,callIceServers=[{urls:"stun:stun.l.google.com:19302"}];
+    async function loadBeats(){try{const response=await fetch("/api/beats");if(response.ok){beats=(await response.json()).beats;renderBeats();renderBeatOptions()}}catch{}}
+    loadBeats();
+    const packages=[
+      {name:"Starter Package",price:50,stripe:"https://buy.stripe.com/fZueVc3b12mtdJCgYA1VK09"},
+      {name:"Artist Package",price:149,stripe:"https://buy.stripe.com/bJe00ieTJbX36hafUw1VK0a"},
+      {name:"Signature Package",price:349,stripe:"https://buy.stripe.com/14A7sK7rh7GN7le9w81VK0b"},
+      {name:"Recording mit Engineer",price:35},{name:"Recording – 2 Stunden",price:65},{name:"Standard Mixing",price:50},{name:"Individuelles Mixing",price:99},{name:"Standard Mastering",price:20},{name:"Recording + Standard Mix",price:85},{name:"Individuelles Mix & Master",price:119},{name:"Recording + individuelles Mix & Master",price:179},{name:"Express-Produktion",price:40}
+    ];
+    let state={package:null,price:0,beat:"Eigener Beat",date:null,time:null,step:0,stripe:null};
+    const modal=document.getElementById("bookingModal"),toast=document.getElementById("toast");
+    function notify(text){toast.textContent=text;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),3000)}
+    const captchaTokens={};
+    let captchaSiteKey="",captchaRequired=false;
+    function mountCaptcha(containerId,tokenName){
+      const container=document.getElementById(containerId);
+      if(!container||!captchaRequired||!captchaSiteKey||!window.turnstile||container.dataset.widget)return;
+      container.dataset.widget=window.turnstile.render(container,{sitekey:captchaSiteKey,callback:token=>{captchaTokens[tokenName]=token},"expired-callback":()=>{captchaTokens[tokenName]=""},"error-callback":()=>{captchaTokens[tokenName]=""}});
+    }
+    function resetCaptcha(tokenName,containerId){captchaTokens[tokenName]="";const container=document.getElementById(containerId);if(window.turnstile&&container?.dataset.widget)window.turnstile.reset(container.dataset.widget)}
+    window.twinSignalTurnstileReady=()=>{mountCaptcha("contactCaptcha","contact");if(authMode==="register")mountCaptcha("registerCaptcha","register");if(document.getElementById("exclusiveModal").classList.contains("open"))mountCaptcha("exclusiveCaptcha","exclusive")};
+    fetch("/api/public-config").then(response=>response.json()).then(config=>{
+      captchaSiteKey=config.turnstileSiteKey||"";
+      captchaRequired=Boolean(config.captchaRequired);
+      if(Array.isArray(config.iceServers)&&config.iceServers.length)callIceServers=config.iceServers;
+      if(!captchaRequired||!captchaSiteKey)return;
+      if(authMode==="register")document.getElementById("registerCaptcha").style.display="flex";
+      const script=document.createElement("script");script.src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=twinSignalTurnstileReady&render=explicit";script.async=true;script.defer=true;document.head.appendChild(script);
+    }).catch(()=>{});
+    function openModal(){modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open")}
+    function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open")}
+    function renderBeats(filter="all"){
+      const visible=beats.filter(b=>filter==="all"||b.genre===filter);
+      document.getElementById("beatGrid").innerHTML=visible.length?visible.map(b=>`<article class="beat-card" data-beat-card="${escapeHtml(b.id)}"><div class="beat-cover"><img src="${escapeHtml(b.cover||"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=700&q=85")}" alt="${escapeHtml(b.name)}"><button class="beat-play" data-preview="${escapeHtml(b.id)}" aria-label="${escapeHtml(b.name)} abspielen" ${b.hasAudio?"":"disabled title=\"Keine Vorschau verfügbar\""}>▶</button></div><div class="beat-info"><div class="beat-row"><div><h3>${escapeHtml(b.name)}</h3><div class="beat-meta">${escapeHtml(b.bpm)} BPM / ${escapeHtml(b.key)} / ${escapeHtml(b.genre)}</div></div><button class="favorite" data-favorite="${escapeHtml(b.id)}" aria-label="Favorit">♡</button></div><div class="beat-progress"><i></i></div></div></article>`).join(""):`<div class="member-empty">Noch keine Beats veröffentlicht.<br>${beats.length?"Für diesen Filter sind keine Beats vorhanden.":"Der Admin kann neue Beats im Portal hinzufügen."}</div>`;
+    }
+    renderBeats();
+    document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));btn.classList.add("active");renderBeats(btn.dataset.filter)}));
+    document.addEventListener("click",e=>{
+      const fav=e.target.closest(".favorite");if(fav){fav.classList.toggle("active");fav.textContent=fav.classList.contains("active")?"♥":"♡";notify(fav.classList.contains("active")?"Beat als Favorit gespeichert":"Favorit entfernt");return}
+      const preview=e.target.closest(".beat-play");if(preview){const beat=beats.find(b=>b.id===preview.dataset.preview);if(!beat||!beat.hasAudio)return;if(activePreview&&activePreview.id===beat.id){if(activePreview.audio.paused){activePreview.audio.play().catch(()=>notify("Audiovorschau konnte nicht abgespielt werden"));preview.textContent="Ⅱ"}else{activePreview.audio.pause();preview.textContent="▶"}return}if(activePreview){activePreview.audio.pause();const oldButton=document.querySelector(`[data-preview="${CSS.escape(activePreview.id)}"]`);if(oldButton)oldButton.textContent="▶"}const audio=new Audio(`/api/beats/${encodeURIComponent(beat.id)}/audio`);activePreview={id:beat.id,audio};preview.textContent="Ⅱ";audio.addEventListener("timeupdate",()=>{const progress=document.querySelector(`[data-beat-card="${CSS.escape(beat.id)}"] .beat-progress i`);if(progress&&audio.duration)progress.style.width=`${audio.currentTime/audio.duration*100}%`});audio.addEventListener("ended",()=>{const button=document.querySelector(`[data-preview="${CSS.escape(beat.id)}"]`);if(button)button.textContent="▶";const progress=document.querySelector(`[data-beat-card="${CSS.escape(beat.id)}"] .beat-progress i`);if(progress)progress.style.width="0";activePreview=null});audio.play().catch(()=>{preview.textContent="▶";activePreview=null;notify("Audiovorschau konnte nicht abgespielt werden")});return}
+    });
+    document.querySelectorAll("[data-open-booking]").forEach(b=>b.addEventListener("click",e=>{
+      e.preventDefault();
+      if(b.dataset.stripe){window.location.href=b.dataset.stripe;return}
+      if(b.dataset.package){state.package=b.dataset.package;state.price=Number(b.dataset.price);const found=packages.find(p=>p.name===state.package);state.stripe=found?.stripe||null}
+      openModal();
+    }));
+    document.querySelector("[data-close-modal]").addEventListener("click",closeModal);
+    modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+    function renderPackages(){document.getElementById("packageOptions").innerHTML=packages.map(p=>`<button class="option ${state.package===p.name?"selected":""}" data-option="${p.name}" data-price="${p.price}" data-stripe="${p.stripe||""}"><span>${p.name}<small>Alle Preise pro Leistung/Song</small></span><b>${p.price} €</b></button>`).join("")}
+    function renderBeatOptions(){document.getElementById("beatOptions").innerHTML=[...beats.map(b=>({name:b.name,meta:`${b.bpm} BPM · ${b.genre}`})),{name:"Ich bringe meinen eigenen Beat mit",meta:"Eigener Beat"} ,{name:"Unterstützung bei der Beat-Auswahl",meta:"Beratung"},{name:"Exklusiven Beat anfragen",meta:"On Request"}].map(b=>`<button class="option ${state.beat===b.name?"selected":""}" data-beat="${escapeHtml(b.name)}"><span>${escapeHtml(b.name)}<small>${escapeHtml(b.meta)}</small></span><b>+</b></button>`).join("")}
+    renderPackages();renderBeatOptions();
+    document.getElementById("packageOptions").addEventListener("click",e=>{const opt=e.target.closest("[data-option]");if(!opt)return;state.package=opt.dataset.option;state.price=Number(opt.dataset.price);state.stripe=opt.dataset.stripe||null;renderPackages()});
+    document.getElementById("beatOptions").addEventListener("click",e=>{const opt=e.target.closest("[data-beat]");if(!opt)return;state.beat=opt.dataset.beat;renderBeatOptions()});
+    const calendar=document.getElementById("calendar");
+    const now=new Date();
+    for(let i=1;i<=14;i++){const d=new Date(now);d.setDate(now.getDate()+i);const el=document.createElement("button");el.className="day";el.textContent=d.toLocaleDateString("de-DE",{weekday:"short",day:"2-digit"}).replace(".","");el.dataset.date=d.toISOString().slice(0,10);calendar.appendChild(el)}
+    calendar.addEventListener("click",e=>{const d=e.target.closest(".day");if(!d)return;calendar.querySelectorAll(".day").forEach(x=>x.classList.remove("selected"));d.classList.add("selected");state.date=d.dataset.date;renderTimes()});
+    function renderTimes(){const times=["10:00","12:30","15:00","18:00"];document.getElementById("times").innerHTML=times.map(t=>`<button class="time">${t}</button>`).join("")}
+    renderTimes();
+    document.getElementById("times").addEventListener("click",e=>{const t=e.target.closest(".time");if(!t)return;document.querySelectorAll(".time").forEach(x=>x.classList.remove("selected"));t.classList.add("selected");state.time=t.textContent});
+    function showStep(n){state.step=n;document.querySelectorAll(".panel-step").forEach(p=>p.classList.toggle("active",Number(p.dataset.step)===n));document.querySelectorAll(".step-ui").forEach((p,i)=>p.classList.toggle("active",i<=n));document.getElementById("prevStep").style.visibility=n===0?"hidden":"visible";document.getElementById("nextStep").textContent=n===4?"Zahlung vorbereiten":"WEITER";if(n===4)renderSummary()}
+    function renderSummary(){document.getElementById("summary").innerHTML=`<div class="summary-row"><span>Angebot</span><b>${state.package||"Noch nicht gewählt"}</b></div><div class="summary-row"><span>Beat</span><b>${state.beat||"Nicht gewählt"}</b></div><div class="summary-row"><span>Termin</span><b>${state.date||"Offen"} · ${state.time||"Offen"}</b></div><div class="summary-row"><span>Künstler</span><b>${document.getElementById("artistName").value||"Noch offen"}</b></div><div class="summary-row total"><span>Gesamt</span><b>${state.price||0} €</b></div>`}
+    document.getElementById("prevStep").addEventListener("click",()=>showStep(Math.max(0,state.step-1)));
+    document.getElementById("nextStep").addEventListener("click",()=>{if(state.step===0&&!state.package){notify("Bitte zuerst ein Angebot wählen");return}if(state.step===1&&!state.beat){notify("Bitte eine Beat-Option wählen");return}if(state.step===2&&(!state.date||!state.time)){notify("Bitte Datum und Uhrzeit wählen");return}if(state.step===3&&(!document.getElementById("artistName").value||!document.getElementById("projectDescription").value)){notify("Bitte Künstlername und Projektbeschreibung ergänzen");return}if(state.step===4){if(state.stripe){window.location.href=state.stripe}else{notify("Für dieses Einzelangebot ist noch kein Stripe-Link hinterlegt")}return}showStep(state.step+1)});
+    document.getElementById("contactForm").addEventListener("submit",async e=>{
+      e.preventDefault();
+      const form=new FormData(e.target);
+      const body={name:String(form.get("name")||""),subject:String(form.get("subject")||""),project:String(form.get("project")||""),message:String(form.get("message")||""),website:String(form.get("website")||""),captchaToken:captchaTokens.contact||""};
+      try{
+        const response=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+        const data=await response.json();
+        if(!response.ok){resetCaptcha("contact","contactCaptcha");notify(data.error||"Anfrage konnte nicht gesendet werden");return}
+        notify("Anfrage wurde an den Admin gesendet");e.target.reset();resetCaptcha("contact","contactCaptcha");
+      }catch{notify("Anfrage konnte nicht gesendet werden")}
+    });
+    const exclusiveModal=document.getElementById("exclusiveModal");
+    document.querySelector("[data-open-exclusive]").addEventListener("click",()=>{exclusiveModal.classList.add("open");mountCaptcha("exclusiveCaptcha","exclusive")});
+    document.querySelector("[data-close-exclusive]").addEventListener("click",()=>exclusiveModal.classList.remove("open"));
+    document.getElementById("exclusiveForm").addEventListener("submit",async e=>{e.preventDefault();const form=new FormData(e.target);const description=[`Sound: ${form.get("sound")}`,`Budget: ${form.get("budget")||"offen"}`,`Referenzen: ${form.get("references")||"keine"}`,String(form.get("description")||"")].join("\n");try{const response=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:"exclusive-beat",name:String(form.get("artist")||""),subject:"Exklusiver Beat",project:String(form.get("genre")||""),message:description,website:String(form.get("website")||""),captchaToken:captchaTokens.exclusive||""})});const data=await response.json();if(!response.ok){resetCaptcha("exclusive","exclusiveCaptcha");notify(data.error||"Anfrage konnte nicht gesendet werden");return}e.target.reset();resetCaptcha("exclusive","exclusiveCaptcha");exclusiveModal.classList.remove("open");notify("Anfrage wurde an den Admin gesendet")}catch{notify("Anfrage konnte nicht gesendet werden")}});
+    const cookieBanner=document.getElementById("cookieBanner");
+    function saveCookieConsent(value){localStorage.setItem("ts_cookie_consent",JSON.stringify(value));cookieBanner.classList.remove("open")}
+    const existingConsent=localStorage.getItem("ts_cookie_consent");
+    if(!existingConsent)cookieBanner.classList.add("open");
+    document.querySelectorAll("[data-cookie-accept]").forEach(b=>b.addEventListener("click",()=>saveCookieConsent({necessary:true,analytics:true,marketing:true})));
+    document.querySelectorAll("[data-cookie-reject]").forEach(b=>b.addEventListener("click",()=>saveCookieConsent({necessary:true,analytics:false,marketing:false})));
+    function openCookieSettings(){
+      const saved=existingConsent?JSON.parse(existingConsent):{necessary:true,analytics:false,marketing:false};
+      document.getElementById("legalTitle").textContent="COOKIE-EINSTELLUNGEN";
+      document.getElementById("legalContent").innerHTML=`<h2>Cookie-Einstellungen</h2><p>Technisch notwendige Cookies sind für Anmeldung und sichere Website-Funktionen erforderlich.</p><div class="cookie-settings-row"><span><strong>Notwendig</strong><br><small>Immer aktiv</small></span><b>Aktiv</b></div><div class="cookie-settings-row"><span><strong>Analyse</strong><br><small>Optional</small></span><input id="cookieAnalytics" type="checkbox" ${saved.analytics?"checked":""}></div><div class="cookie-settings-row"><span><strong>Marketing</strong><br><small>Optional</small></span><input id="cookieMarketing" type="checkbox" ${saved.marketing?"checked":""}></div><button class="primary" id="saveCookieSettings" style="margin-top:20px">AUSWAHL SPEICHERN</button>`;
+      document.getElementById("legalModal").classList.add("open");document.getElementById("legalModal").setAttribute("aria-hidden","false");
+      document.getElementById("saveCookieSettings").addEventListener("click",()=>{saveCookieConsent({necessary:true,analytics:document.getElementById("cookieAnalytics").checked,marketing:document.getElementById("cookieMarketing").checked});closeLegal()});
+    }
+    document.querySelectorAll("[data-cookie-settings]").forEach(b=>b.addEventListener("click",openCookieSettings));
+    const legalData={
+      impressum:`<h2>Impressum</h2><h3>Angaben gemäß § 5 DDG</h3><p><strong>Twin Signal</strong><br>Luca Elias Zawar<br>Brühlstraße 12<br>66564 Ottweiler<br>Deutschland</p><p>E-Mail: <a href="mailto:dozettmusik@gmail.com">dozettmusik@gmail.com</a><br>Telefon: <a href="tel:+4915565305520">+49 15565 305520</a></p><p><strong>Hinweis:</strong> Bitte ergänzen Sie vor Veröffentlichung weitere gesetzlich erforderliche Angaben, einschließlich Umsatzsteuerinformationen, falls zutreffend. Diese Angaben sollten rechtlich geprüft werden.</p>`,
+      datenschutz:`<h2>Datenschutzerklärung</h2><h3>Verantwortlicher</h3><p>Twin Signal, Luca Elias Zawar, Brühlstraße 12, 66564 Ottweiler, Deutschland.</p><h3>Verarbeitung</h3><p>Beim Besuch können Server- und Verbindungsdaten verarbeitet werden. Bei Registrierung werden Kontaktdaten, Profildaten, Nachrichten und Buchungsangaben verarbeitet. Die Rechtsgrundlagen und Aufbewahrungsfristen sind vor Veröffentlichung durch den Verantwortlichen rechtlich prüfen zu lassen.</p><h3>Sicherheitsprüfung</h3><p>Zum Schutz von Registrierung und Anfrageformularen kann Cloudflare Turnstile eingesetzt werden. Dabei können technische Nutzungsdaten und die IP-Adresse zur Prüfung an Cloudflare übermittelt werden. Bitte ergänzen Sie vor dem Live-Betrieb die aktuellen Angaben zu Anbieter, Rechtsgrundlage und Aufbewahrung.</p><h3>Stripe und externe Dienste</h3><p>Für Zahlungen werden Stripe-Dienste genutzt. Beim Aufruf eines Stripe-Checkout-Links können Daten an Stripe übertragen werden. Weitere Details ergeben sich aus den Datenschutzhinweisen von Stripe.</p><p><strong>Platzhalter:</strong> Datenschutzerklärung muss vor dem Live-Betrieb vollständig mit Hosting, Cookies, Empfängern, Widerruf und Betroffenenrechten ergänzt werden.</p>`,
+      agb:`<h2>Allgemeine Geschäftsbedingungen</h2><h3>Geltungsbereich</h3><p>Diese Mustertexte gelten für Studioleistungen von Twin Signal. Sie sind vor Verwendung durch eine juristisch qualifizierte Person zu prüfen und zu vervollständigen.</p><h3>Leistungen und Preise</h3><p>Die angebotenen Pakete und Einzelleistungen werden auf der Website ausgewiesen. Maßgeblich ist die ausgewählte Leistung sowie der bestätigte Leistungsumfang.</p><h3>Zahlung</h3><p>Zahlungen werden über Stripe abgewickelt. Durch Abschluss des Checkout-Vorgangs entsteht noch keine Rechtsbeziehung außerhalb des im Angebot beschriebenen Leistungsumfangs.</p><h3>Termine und Stornierung</h3><p>Termine, Stornierungsfristen, Ausfallregelungen und Zahlungsbedingungen sind vor Veröffentlichung verbindlich einzutragen.</p>`,
+      widerruf:`<h2>Widerrufsbelehrung</h2><p><strong>Musterhinweis:</strong> Für Verbraucher kann bei außerhalb von Geschäftsräumen geschlossenen oder Fernabsatzverträgen ein Widerrufsrecht bestehen. Für Terminleistungen können besondere Voraussetzungen gelten, etwa bei individuellen Produktionen oder bereits vollständig erbrachten Leistungen.</p><p>Bitte ergänzen Sie vor Veröffentlichung Widerrufsfrist, Muster-Widerrufsformular, Anschrift des Verantwortlichen und Hinweise zu Ausschlüssen oder vorzeitiger Zustimmung.</p>`
+    };
+    function closeLegal(){document.getElementById("legalModal").classList.remove("open");document.getElementById("legalModal").setAttribute("aria-hidden","true")}
+    document.querySelectorAll("[data-legal]").forEach(b=>b.addEventListener("click",()=>{const type=b.dataset.legal;document.getElementById("legalTitle").textContent=type.toUpperCase();document.getElementById("legalContent").innerHTML=legalData[type];document.getElementById("legalModal").classList.add("open");document.getElementById("legalModal").setAttribute("aria-hidden","false")}));
+    document.querySelector("[data-close-legal]").addEventListener("click",closeLegal);
+    document.getElementById("legalModal").addEventListener("click",e=>{if(e.target.id==="legalModal")closeLegal()});
+    let authMode="login",currentUser=null,activeChatId=null,callStream=null;
+    const sharedCallHash=new URLSearchParams(window.location.hash.slice(1));
+    let sharedCallLinkData=null,sharedCallPrompted=false;
+    const sharedCallId=sharedCallHash.get("call")||"",sharedCallToken=sharedCallHash.get("token")||"";
+    if(/^[\w-]{16,80}$/.test(sharedCallId)&&/^[a-f0-9]{64}$/.test(sharedCallToken)){
+      sharedCallLinkData={callId:sharedCallId,token:sharedCallToken};
+      history.replaceState(null,"",window.location.pathname+window.location.search);
+    }
+    const authModal=document.getElementById("authModal"),portalModal=document.getElementById("portalModal");
+    const users=()=>JSON.parse(localStorage.getItem("ts_users")||"[]");
+    const saveUsers=(list)=>localStorage.setItem("ts_users",JSON.stringify(list));
+    async function hashPassword(value){const data=new TextEncoder().encode(value);const digest=await crypto.subtle.digest("SHA-256",data);return [...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+    document.getElementById("openAuth").addEventListener("click",async()=>{try{const response=await fetch("/api/me");if(response.ok){const data=await response.json();currentUser=data.user;openPortal();return}}catch{}authModal.classList.add("open")});
+    document.querySelector("[data-close-auth]").addEventListener("click",()=>authModal.classList.remove("open"));
+    document.querySelectorAll("[data-auth-tab]").forEach(tab=>tab.addEventListener("click",async()=>{
+      authMode=tab.dataset.authTab;
+      document.querySelectorAll("[data-auth-tab]").forEach(t=>t.classList.remove("active"));
+      tab.classList.add("active");
+      document.getElementById("setupKeyField").style.display=authMode==="admin"?"flex":"none";
+      document.getElementById("adminSetupKey").required=authMode==="admin";
+      document.getElementById("authEmailField").style.display=authMode==="register"?"flex":"none";
+      document.getElementById("authEmail").required=authMode==="register";
+      document.getElementById("authUsernameLabel").textContent="Benutzername oder E-Mail";
+      document.getElementById("registerCaptcha").style.display=authMode==="register"&&captchaRequired?"flex":"none";
+      document.getElementById("authPassword").minLength=authMode==="register"?8:6;
+      if(authMode==="register")mountCaptcha("registerCaptcha","register");
+      document.getElementById("authSubmit").textContent=authMode==="register"?"MITGLIED ERSTELLEN":authMode==="admin"?"ADMIN EINRICHTEN / ANMELDEN":"ANMELDEN";
+      if(authMode==="admin"){
+        try{
+          const response=await fetch("/api/admin/status");
+          if(!response.ok)throw new Error();
+          const status=await response.json();
+          document.getElementById("authEmailField").style.display=status.configured?"none":"flex";
+          document.getElementById("authEmail").required=!status.configured;
+          document.getElementById("authUsernameLabel").textContent=status.configured?"Benutzername oder E-Mail":"Admin-Benutzername";
+          document.getElementById("authSubmit").textContent=status.configured?"ADMIN ANMELDEN":"ADMIN EINRICHTEN";
+          document.getElementById("authPassword").minLength=status.configured?6:12;
+          document.getElementById("adminCodeLabel").textContent=status.configured?"Admin-Code":"Einrichtungs-Code";
+        }catch{notify("Adminstatus konnte nicht geladen werden")}
+      }
+    }));
+    document.getElementById("authForm").addEventListener("submit",async e=>{
+      e.preventDefault();
+      const username=document.getElementById("authUsername").value.trim(),email=document.getElementById("authEmail").value.trim().toLowerCase(),password=document.getElementById("authPassword").value;
+      let endpoint="/api/auth/login",body={username,password,website:e.target.elements.website.value};
+      if(authMode==="register"){endpoint="/api/auth/register";body={username,email,password,captchaToken:captchaTokens.register||"",website:e.target.elements.website.value}}
+      if(authMode==="admin"){
+        let status;
+        try{
+          const response=await fetch("/api/admin/status");
+          if(!response.ok)throw new Error();
+          status=await response.json();
+        }catch{notify("Adminstatus konnte nicht geladen werden");return}
+        if(!status.configured){endpoint="/api/admin/setup";body={username,email,password,setupKey:document.getElementById("adminSetupKey").value}}
+        else{body={username,password,setupKey:document.getElementById("adminSetupKey").value}}
+      }
+      try{
+        const response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+        if(!(response.headers.get("content-type")||"").includes("application/json"))throw new Error("Der Webserver liefert keine Anmelde-API. Öffne lokal http://localhost:4173 oder stelle sicher, dass das Node-Backend auf der Website läuft.");
+        const data=await response.json();
+        if(!response.ok){if(authMode==="register")resetCaptcha("register","registerCaptcha");notify(data.error||"Anmeldung fehlgeschlagen");return}
+        currentUser=data.user;authModal.classList.remove("open");openPortal();e.target.reset();if(authMode==="register")resetCaptcha("register","registerCaptcha");notify(authMode==="register"?"Mitgliedskonto erstellt":authMode==="admin"?"Adminbereich geöffnet":"Angemeldet");
+      }catch(error){
+        const message=window.location.protocol==="file:"?"Bitte die Website über den Server öffnen: http://localhost:4173":error instanceof TypeError?`Backend unter ${window.location.origin} nicht erreichbar. Lokal: http://localhost:4173`:error.message||"Anmeldung fehlgeschlagen";
+        notify(message);
+      }
+    });
+    function openPortal(){
+      document.getElementById("currentName").textContent=currentUser.artist;document.getElementById("currentRole").textContent=currentUser.role==="admin"?"Administrator":"Mitglied";
+      document.getElementById("currentAvatar").src=currentUser.avatar||"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42'%3E%3Crect width='42' height='42' fill='%23222'/%3E%3Ctext x='21' y='27' text-anchor='middle' font-size='18' fill='%23fff'%3E"+encodeURIComponent(currentUser.artist.charAt(0).toUpperCase())+"%3C/text%3E%3C/svg%3E";
+      renderPortalNav();portalModal.classList.add("open");portalModal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");renderCustomerList();renderChat();showSharedCallInvite();
+      if(!window.twinSignalEvents){
+        window.twinSignalEvents=new EventSource("/api/events");
+        window.twinSignalEvents.onmessage=e=>{
+          const event=JSON.parse(e.data);
+          if(event.type==="message"){renderChat()}
+          if(event.type==="beat-update"){loadBeats()}
+          if(event.type==="contact-request"){notify("Neue Anfrage erhalten");if(document.querySelector('[data-portal-view="requests"].active'))renderContactRequests(document.getElementById("dynamicPortal"))}
+          if(event.type==="contact-request-deleted"&&document.querySelector('[data-portal-view="requests"].active'))renderContactRequests(document.getElementById("dynamicPortal"));
+          if(event.type==="chat-deleted"&&activeChatId===event.withId)renderChat();
+          if(event.type==="call"){handleIncomingCall(event)}
+        };
+      }
+    }
+    portalModal.addEventListener("click",e=>{if(e.target===portalModal){portalModal.classList.remove("open");document.body.classList.remove("modal-open")}});
+    function renderPortalNav(){
+      const nav=document.getElementById("portalNav");
+      const items=currentUser.role==="admin"?[["chat","Chat"],["customers","Kunden"],["requests","Anfragen"],["beats","Beat-Verwaltung"],["settings","Einstellungen"],["profile","Profil"]]:[["chat","Chat"],["profile","Profil"]];
+      nav.innerHTML=items.map((v,i)=>`<button class="${i===0?"active":""}" data-portal-view="${v[0]}">${v[1]}</button>`).join("")+`<button id="logoutPortal" style="margin-top:18px;color:#b77">Abmelden</button>`;
+    }
+    document.getElementById("portalNav").addEventListener("click",async e=>{
+      if(e.target.id==="logoutPortal"){await closeCall();window.twinSignalEvents?.close();window.twinSignalEvents=null;fetch("/api/auth/logout",{method:"POST"}).finally(()=>{portalModal.classList.remove("open");document.body.classList.remove("modal-open");notify("Abgemeldet")});return}
+      const button=e.target.closest("[data-portal-view]");if(!button)return;
+      document.querySelectorAll("[data-portal-view]").forEach(b=>b.classList.remove("active"));button.classList.add("active");renderPortalView(button.dataset.portalView);
+    });
+    function renderPortalView(view){
+      const chat=document.getElementById("chatPanel"),customer=document.getElementById("customerPanel");
+      if(view==="chat"){const old=document.getElementById("dynamicPortal");if(old)old.remove();chat.style.display="grid";customer.style.display="block";renderCustomerList();renderChat();return}
+      chat.style.display="none";customer.style.display="none";
+      let target=document.createElement("div");target.className=view==="profile"?"profile-pane":view==="beats"?"beats-admin":"customers-admin";target.id="dynamicPortal";
+      const old=document.getElementById("dynamicPortal");if(old)old.remove();portalModal.querySelector(".portal").appendChild(target);
+      if(view==="profile")renderProfile(target);
+      if(view==="beats")renderBeatsAdmin(target);
+      if(view==="customers")renderCustomersAdmin(target);
+      if(view==="requests")renderContactRequests(target);
+      if(view==="settings")renderAdminSettings(target);
+    }
+    async function renderCustomerList(){
+      const list=document.getElementById("customerList");
+      let targets=[];
+      try{
+        const response=await fetch("/api/users"),data=await response.json();
+        if(!response.ok)throw new Error(data.error||"Mitglieder konnten nicht geladen werden");
+        targets=data.users;
+      }catch(error){notify(error.message||"Mitglieder konnten nicht geladen werden");return}
+      portalContacts=targets;
+      if(activeChatId&&!targets.some(user=>user.id===activeChatId))activeChatId=null;
+      if(!activeChatId&&targets.length)activeChatId=targets[0].id;
+      document.getElementById("customerCount").textContent=targets.length;
+      list.innerHTML=targets.length?targets.map(u=>`<button class="customer-row ${activeChatId===u.id?"active":""}" data-chat-user="${escapeHtml(u.id)}"><img class="avatar" src="${escapeHtml(u.avatar||"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42'%3E%3Crect width='42' height='42' fill='%23222'/%3E%3C/svg%3E")}" alt=""><span>${escapeHtml(u.artist)}<small>${escapeHtml(u.role==="admin"?"Twin Signal":u.email||"Mitglied")}</small></span></button>`).join(""):`<div class="member-empty">Noch keine anderen Mitglieder vorhanden.</div>`;
+      const select=document.getElementById("chatContactSelect");
+      select.innerHTML=targets.length?targets.map(user=>`<option value="${escapeHtml(user.id)}">${escapeHtml(user.artist)}</option>`).join(""):`<option value="">Keine Mitglieder vorhanden</option>`;
+      select.value=activeChatId||"";
+      renderChat();
+    }
+    document.getElementById("customerList").addEventListener("click",e=>{const row=e.target.closest("[data-chat-user]");if(!row)return;activeChatId=row.dataset.chatUser;renderCustomerList();renderChat()});
+    document.getElementById("chatContactSelect").addEventListener("change",e=>{activeChatId=e.target.value||null;renderCustomerList();renderChat()});
+    function chatKey(){if(!activeChatId)return "";return [currentUser.id,activeChatId].sort().join(":")}
+    let portalContacts=[];
+    async function chatMessages(){
+      if(!activeChatId)return [];
+      const response=await fetch(`/api/messages?with=${encodeURIComponent(activeChatId)}`),data=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(data.error||"Nachrichten konnten nicht geladen werden");
+      return data.messages;
+    }
+    async function renderChat(){
+      const target=portalContacts.find(user=>user.id===activeChatId);
+      document.getElementById("chatName").textContent=target?target.artist:"Nachrichten";
+      document.getElementById("deleteChat").style.display=currentUser.role==="admin"&&activeChatId?"inline-flex":"none";
+      const messages=document.getElementById("messages");
+      try{
+        const chat=await chatMessages();
+        messages.innerHTML=chat.map(message=>`<div class="message ${message.from===currentUser.id?"me":""}">${escapeHtml(message.text)}<span class="message-meta">${new Date(message.createdAt).toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})}</span></div>`).join("")||`<div class="member-empty">${activeChatId?"Noch keine Nachrichten in diesem Gespräch.":"Wähle ein Mitglied aus, um den Chat zu starten."}</div>`;
+      }catch(error){messages.innerHTML=`<div class="member-empty">${escapeHtml(error.message||"Nachrichten konnten nicht geladen werden")}</div>`}
+      messages.scrollTop=messages.scrollHeight;
+    }
+    document.getElementById("chatForm").addEventListener("submit",async e=>{e.preventDefault();const input=document.getElementById("chatInput");const text=input.value.trim();if(!text||!activeChatId)return;const response=await fetch("/api/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text,to:activeChatId})});if(!response.ok){const data=await response.json().catch(()=>({}));notify(data.error||"Nachricht konnte nicht gesendet werden");return}input.value="";renderChat()});
+    document.getElementById("deleteChat").addEventListener("click",async()=>{if(currentUser?.role!=="admin"||!activeChatId)return;const target=portalContacts.find(user=>user.id===activeChatId);if(!confirm(`Den gesamten Chatverlauf mit ${target?.artist||"diesem Mitglied"} wirklich löschen?`))return;const response=await fetch(`/api/messages?with=${encodeURIComponent(activeChatId)}`,{method:"DELETE"});const data=await response.json().catch(()=>({}));if(!response.ok){notify(data.error||"Chat konnte nicht gelöscht werden");return}await renderChat();notify(`Chatverlauf gelöscht (${data.deleted} Nachrichten)`)});
+    function renderProfile(target){
+      target.innerHTML=`<h2>PROFIL</h2><img id="profilePreview" src="${escapeHtml(currentUser.avatar||"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110'%3E%3Crect width='110' height='110' fill='%23222'/%3E%3C/svg%3E")}" alt="Profilbild"><div class="field" style="margin-top:18px"><label>Profilbild hochladen</label><input type="file" id="profileImage" accept="image/png,image/jpeg,image/webp"></div><div class="field" style="margin-top:12px"><label>Künstlername</label><input id="profileArtist" value="${escapeHtml(currentUser.artist)}"></div><button class="primary" id="saveProfile" style="margin-top:14px">SPEICHERN</button>`;
+      document.getElementById("profileImage").addEventListener("change",e=>{const file=e.target.files[0];if(!file)return;if(!["image/png","image/jpeg","image/webp"].includes(file.type)||file.size>1024*1024){e.target.value="";notify("Bitte PNG, JPG oder WebP unter 1 MB auswählen");return}const reader=new FileReader();reader.onload=()=>{currentUser.avatar=reader.result;document.getElementById("profilePreview").src=reader.result};reader.onerror=()=>notify("Profilbild konnte nicht gelesen werden");reader.readAsDataURL(file)});
+      document.getElementById("saveProfile").addEventListener("click",async()=>{currentUser.artist=document.getElementById("profileArtist").value.trim()||currentUser.artist;const response=await fetch("/api/profile",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({artist:currentUser.artist,avatar:currentUser.avatar})});if(!response.ok){notify("Profil konnte nicht gespeichert werden");return}currentUser=(await response.json()).user;openPortal();notify("Profil gespeichert")});
+    }
+    function renderBeatsAdmin(target){
+      target.innerHTML=`<h2>BEATS VERWALTEN</h2><div class="admin-grid"><div class="field"><label>Beatname</label><input id="adminBeatName" required></div><div class="field"><label>Genre</label><select id="adminBeatGenre"><option>Trap</option><option>Drill</option><option>Rage</option><option>Boom Bap</option><option>Melodic Rap</option><option>R&amp;B</option><option>Pop</option><option>Experimental</option></select></div><div class="field"><label>BPM</label><input id="adminBeatBpm" type="number" min="1" max="300"></div><div class="field"><label>Tonart</label><input id="adminBeatKey" placeholder="F# MIN"></div><div class="field" style="grid-column:1/-1"><label>Cover-Bild URL (eigene Website oder images.unsplash.com)</label><input id="adminBeatCover" type="url" placeholder="https://images.unsplash.com/..."></div><div class="field" style="grid-column:1/-1"><label>Audiodatei (MP3, WAV, OGG, WEBM, M4A, AAC oder FLAC; max. 12 MB)</label><input id="adminBeatAudio" type="file" accept="audio/mpeg,audio/wav,audio/ogg,audio/webm,audio/mp4,audio/aac,audio/flac"></div></div><button class="primary" id="addBeat" style="margin-top:14px">BEAT HINZUFÜGEN</button><div id="beatAdminList" style="margin-top:24px"></div>`;
+      document.getElementById("addBeat").addEventListener("click",async()=>{const name=document.getElementById("adminBeatName").value.trim(),file=document.getElementById("adminBeatAudio").files[0];if(!name){notify("Beatname erforderlich");return}if(file&&file.size>12*1024*1024){notify("Audiodatei darf maximal 12 MB groß sein");return}const response=await fetch("/api/beats",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,bpm:document.getElementById("adminBeatBpm").value||"—",key:document.getElementById("adminBeatKey").value||"—",genre:document.getElementById("adminBeatGenre").value,cover:document.getElementById("adminBeatCover").value})});const result=await response.json().catch(()=>({}));if(!response.ok){notify(result.error||"Beat konnte nicht hinzugefügt werden");return}if(file){const extensions={mp3:"audio/mpeg",wav:"audio/wav",wave:"audio/wav",ogg:"audio/ogg",webm:"audio/webm",m4a:"audio/mp4",aac:"audio/aac",flac:"audio/flac"};const extension=file.name.split(".").pop().toLowerCase(),contentType=file.type||extensions[extension]||"application/octet-stream";const upload=await fetch(`/api/beats/${encodeURIComponent(result.beat.id)}/audio`,{method:"POST",headers:{"Content-Type":contentType},body:file});if(!upload.ok){const error=await upload.json().catch(()=>({}));await loadBeats();renderBeatAdminList();notify(error.error||"Beat wurde erstellt, aber der Audio-Upload ist fehlgeschlagen");return}}await loadBeats();renderBeatAdminList();document.getElementById("adminBeatName").value="";document.getElementById("adminBeatAudio").value="";notify("Beat hinzugefügt")});
+      function renderBeatAdminList(){document.getElementById("beatAdminList").innerHTML=beats.length?beats.map(b=>`<div class="beat-admin-row"><span><strong>${escapeHtml(b.name)}</strong><small style="display:block;color:#777">${escapeHtml(b.genre)} · ${escapeHtml(b.bpm)} BPM · ${b.hasAudio?"Audio vorhanden":"kein Audio"}</small></span><button class="danger" data-delete-beat="${escapeHtml(b.id)}">LÖSCHEN</button></div>`).join(""):`<div class="member-empty">Keine Beats vorhanden.</div>`}
+      renderBeatAdminList();
+      target.addEventListener("click",async e=>{const del=e.target.closest("[data-delete-beat]");if(!del)return;const response=await fetch(`/api/beats/${encodeURIComponent(del.dataset.deleteBeat)}`,{method:"DELETE"});if(!response.ok){notify("Beat konnte nicht gelöscht werden");return}await loadBeats();renderBeatAdminList();notify("Beat gelöscht")});
+    }
+    async function renderCustomersAdmin(target){
+      const response=await fetch("/api/users");const data=response.ok?(await response.json()).users:[];
+      target.innerHTML=`<h2>KUNDEN</h2>${data.length?data.map(u=>`<div class="beat-admin-row"><span><strong>${escapeHtml(u.artist)}</strong><small style="display:block;color:#777">${escapeHtml(u.email||"Mitglied")}</small></span><button class="icon-button" data-open-member="${escapeHtml(u.id)}" title="Chat öffnen">›</button></div>`).join(""):`<div class="member-empty">Noch keine Kunden registriert.</div>`}`;
+      target.querySelectorAll("[data-open-member]").forEach(b=>b.addEventListener("click",()=>{activeChatId=b.dataset.openMember;target.remove();const nav=document.querySelector('[data-portal-view="chat"]');if(nav){document.querySelectorAll("[data-portal-view]").forEach(x=>x.classList.remove("active"));nav.classList.add("active")}document.getElementById("chatPanel").style.display="grid";document.getElementById("customerPanel").style.display="block";renderCustomerList();renderChat()}));
+    }
+    async function renderContactRequests(target){
+      const response=await fetch("/api/contact");
+      if(!response.ok){notify("Anfragen konnten nicht geladen werden");return}
+      const {requests}=await response.json();
+      target.innerHTML=`<h2>ANFRAGEN</h2>${requests.length?requests.map(r=>`<article class="beat-admin-row" style="align-items:flex-start;gap:20px"><div style="flex:1"><strong>${r.type==="exclusive-beat"?"EXKLUSIVE BEAT-ANFRAGE · ":""}${escapeHtml(r.name)} · ${escapeHtml(r.subject)}</strong><small style="display:block;color:#777;margin:5px 0">${escapeHtml(r.project||"Allgemein")} · ${new Date(r.createdAt).toLocaleString("de-DE")}</small><p style="margin:8px 0;color:#bbb;white-space:pre-wrap">${escapeHtml(r.message)}</p></div><button class="danger" data-delete-request="${escapeHtml(r.id)}">LÖSCHEN</button></article>`).join(""):`<div class="member-empty">Noch keine Kontakt- oder Beat-Anfragen vorhanden.</div>`}`;
+      target.onclick=async event=>{
+        const button=event.target.closest("[data-delete-request]");
+        if(!button)return;
+        const request=requests.find(item=>item.id===button.dataset.deleteRequest);
+        if(!request||!confirm(`Anfrage von ${request.name} wirklich löschen?`))return;
+        const deleted=await fetch(`/api/contact/${encodeURIComponent(request.id)}`,{method:"DELETE"});
+        const result=await deleted.json().catch(()=>({}));
+        if(!deleted.ok){notify(result.error||"Anfrage konnte nicht gelöscht werden");return}
+        notify("Anfrage gelöscht");
+        await renderContactRequests(target);
+      };
+    }
+    function renderAdminSettings(target){
+      target.innerHTML=`<h2>ADMIN-EINSTELLUNGEN</h2><p style="color:#aaa;line-height:1.6">Ändere den zusätzlichen Code, der bei jeder Admin-Anmeldung abgefragt wird. Mindestens 8 Zeichen.</p><form id="adminCodeForm" style="max-width:520px"><div class="field"><label>Aktuelles Admin-Passwort</label><input id="currentAdminPassword" type="password" required autocomplete="current-password"></div><div class="field" style="margin-top:12px"><label>Neuer Admin-Code</label><input id="newAdminCode" type="password" required minlength="8" autocomplete="new-password"></div><div class="field" style="margin-top:12px"><label>Neuen Admin-Code bestätigen</label><input id="confirmAdminCode" type="password" required minlength="8" autocomplete="new-password"></div><button class="primary" type="submit" style="margin-top:16px">ADMIN-CODE ÄNDERN</button></form>`;
+      document.getElementById("adminCodeForm").addEventListener("submit",async e=>{
+        e.preventDefault();
+        const newCode=document.getElementById("newAdminCode").value;
+        if(newCode!==document.getElementById("confirmAdminCode").value){notify("Die neuen Codes stimmen nicht überein");return}
+        const response=await fetch("/api/admin/setup-code",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({currentPassword:document.getElementById("currentAdminPassword").value,newCode})});
+        const result=await response.json().catch(()=>({}));
+        if(!response.ok){notify(result.error||"Admin-Code konnte nicht geändert werden");return}
+        e.target.reset();notify("Admin-Code geändert. Bei der nächsten Anmeldung den neuen Code verwenden.");
+      });
+    }
+    function escapeHtml(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+    let peerConnections=new Map(),remoteMediaStreams=new Map(),pendingCandidates=new Map(),offersInProgress=new Set(),callParticipants=new Set(),pendingInvites=new Set(),callRoomId="",callHostId="",callShareLink="",callVideoEnabled=false,callMuted=false,incomingCallInvite=null;
+    const cameraProfiles={
+      auto:{},
+      480:{width:{ideal:854},height:{ideal:480},frameRate:{ideal:30,max:60}},
+      720:{width:{ideal:1280},height:{ideal:720},frameRate:{ideal:30,max:60}},
+      1080:{width:{ideal:1920},height:{ideal:1080},frameRate:{ideal:30,max:60}},
+      1440:{width:{ideal:2560},height:{ideal:1440},frameRate:{ideal:30,max:30}},
+      2160:{width:{ideal:3840},height:{ideal:2160},frameRate:{ideal:30,max:30}}
+    };
+    function cameraConstraints(deviceId=""){
+      return {...(deviceId?{deviceId:{exact:deviceId}}:{}),...(cameraProfiles[document.getElementById("videoQuality").value]||cameraProfiles.auto)};
+    }
+    function updateQualityStatus(){
+      const track=callStream?.getVideoTracks()[0],status=document.getElementById("qualityStatus");
+      if(!track){status.textContent=`Wunsch: ${document.getElementById("videoQuality").selectedOptions[0].text} (wenn verfügbar)`;return}
+      const settings=track.getSettings();
+      status.textContent=settings.width&&settings.height?`Aktuell ${settings.width}×${settings.height}${settings.frameRate?` · ${Math.round(settings.frameRate)} FPS`:""}`:"Kamera verwendet bestmögliche Qualität";
+    }
+    async function sendCallSignal(to,payload){
+      const response=await fetch("/api/signaling",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({to,payload})});
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(data.error||"Anrufsignal konnte nicht gesendet werden");
+      return data;
+    }
+    async function prepareCallShareLink(){
+      const button=document.getElementById("shareCallWhatsapp");
+      callShareLink="";button.disabled=true;
+      if(!callRoomId)return;
+      try{
+        const response=await fetch("/api/call-links",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({callId:callRoomId})});
+        const data=await response.json().catch(()=>({}));
+        if(!response.ok)throw new Error(data.error||"WhatsApp-Link konnte nicht erstellt werden");
+        const url=new URL(window.location.pathname,window.location.origin);
+        url.hash=new URLSearchParams({call:callRoomId,token:data.token}).toString();
+        callShareLink=url.href;button.disabled=false;
+      }catch(error){notify(error.message||"WhatsApp-Link konnte nicht erstellt werden")}
+    }
+    async function joinCallByLink(invitation){
+      const response=await fetch("/api/call-links/join",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({callId:invitation.callId,token:invitation.linkToken})});
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(data.error||"Anruf-Link konnte nicht verwendet werden");
+      return data;
+    }
+    function participantName(id){return id===currentUser.id?"Du":portalContacts.find(user=>user.id===id)?.artist||"Mitglied"}
+    function updateCallTitle(){document.getElementById("callTitle").textContent=`${callVideoEnabled?"VIDEOANRUF":"AUDIOANRUF"} · ${callParticipants.size}/4`}
+    function renderCallParticipants(){
+      const target=document.getElementById("callParticipants");
+      target.innerHTML=[...callParticipants].map(id=>`<span class="call-participant">${escapeHtml(participantName(id))}${id===callHostId?" · Host":""}${currentUser.id===callHostId&&id!==currentUser.id?`<button type="button" data-kick-user="${escapeHtml(id)}">ENTFERNEN</button>`:""}</span>`).join("")+
+        [...pendingInvites].map(id=>`<span class="call-participant">${escapeHtml(participantName(id))} · EINGELADEN</span>`).join("");
+      const select=document.getElementById("callInviteSelect");
+      const available=portalContacts.filter(user=>!callParticipants.has(user.id)&&!pendingInvites.has(user.id));
+      select.innerHTML=available.map(user=>`<option value="${escapeHtml(user.id)}">${escapeHtml(user.artist)}</option>`).join("");
+      document.getElementById("inviteCallButton").disabled=!available.length||callParticipants.size+pendingInvites.size>=4;
+      document.getElementById("callEmpty").style.display=callParticipants.size>1?"none":"block";
+      updateCallTitle();
+    }
+    function getPeerConnection(peerId){
+      const existing=peerConnections.get(peerId);
+      if(existing)return existing;
+      const roomId=callRoomId,connection=new RTCPeerConnection({iceServers:callIceServers});
+      peerConnections.set(peerId,connection);
+      callStream?.getTracks().forEach(track=>connection.addTrack(track,callStream));
+      connection.ontrack=event=>{
+        let stream=remoteMediaStreams.get(peerId);
+        if(!stream){stream=new MediaStream();remoteMediaStreams.set(peerId,stream)}
+        const tracks=event.streams[0]?.getTracks()||[event.track];
+        tracks.forEach(track=>{if(!stream.getTracks().some(existingTrack=>existingTrack.id===track.id))stream.addTrack(track)});
+        let tile=[...document.getElementById("callStreams").children].find(item=>item.dataset.peerId===peerId);
+        if(!tile){
+          tile=document.createElement("div");tile.className="call-tile";tile.dataset.peerId=peerId;
+          const video=document.createElement("video");video.autoplay=true;video.playsInline=true;video.muted=true;
+          const audio=document.createElement("audio");audio.autoplay=true;audio.style.display="none";
+          const name=document.createElement("strong");name.textContent=participantName(peerId);
+          tile.append(video,audio,name);document.getElementById("callStreams").appendChild(tile);
+        }
+        const video=tile.querySelector("video"),audio=tile.querySelector("audio");
+        video.srcObject=stream;audio.srcObject=stream;
+        video.style.display=stream.getVideoTracks().length?"block":"none";
+        audio.play().catch(()=>notify("Tippe auf die Anrufseite, um den Ton freizugeben"));
+      };
+      connection.onicecandidate=event=>{
+        if(event.candidate&&callRoomId===roomId)sendCallSignal(peerId,{type:"ice",callId:roomId,candidate:event.candidate}).catch(error=>notify(error.message));
+      };
+      connection.onconnectionstatechange=()=>{
+        if(connection.connectionState==="failed"&&peerConnections.get(peerId)===connection){removePeerConnection(peerId);notify(`Verbindung zu ${participantName(peerId)} fehlgeschlagen`)}
+      };
+      return connection;
+    }
+    function removePeerConnection(peerId){
+      const connection=peerConnections.get(peerId);
+      if(connection){peerConnections.delete(peerId);connection.ontrack=null;connection.onicecandidate=null;connection.close()}
+      remoteMediaStreams.delete(peerId);pendingCandidates.delete(peerId);offersInProgress.delete(peerId);
+      const tile=[...document.getElementById("callStreams").children].find(item=>item.dataset.peerId===peerId);
+      if(tile)tile.remove();
+    }
+    async function flushCandidates(peerId,connection){
+      const candidates=pendingCandidates.get(peerId)||[];
+      pendingCandidates.delete(peerId);
+      let failed=false;
+      for(const candidate of candidates)try{await connection.addIceCandidate(candidate)}catch{failed=true}
+      if(failed)notify(`Ein Teil der Netzwerkverbindung zu ${participantName(peerId)} konnte nicht aufgebaut werden`);
+    }
+    async function connectToPeer(peerId){
+      if(!callRoomId||peerId===currentUser.id||!callParticipants.has(peerId))return;
+      const connection=getPeerConnection(peerId);
+      if(currentUser.id<peerId&&!offersInProgress.has(peerId)&&connection.signalingState==="stable"){
+        offersInProgress.add(peerId);
+        try{
+          const offer=await connection.createOffer();
+          await connection.setLocalDescription(offer);
+          await sendCallSignal(peerId,{type:"offer",callId:callRoomId,sdp:connection.localDescription});
+        }finally{offersInProgress.delete(peerId)}
+      }
+    }
+    async function populateCallDevices(){
+      const devices=await navigator.mediaDevices.enumerateDevices();
+      const audioDevices=devices.filter(device=>device.kind==="audioinput"),videoDevices=devices.filter(device=>device.kind==="videoinput");
+      document.getElementById("audioDevices").innerHTML=audioDevices.map((device,index)=>`<option value="${escapeHtml(device.deviceId)}">${escapeHtml(device.label||"Audioeingang "+(index+1))}</option>`).join("");
+      document.getElementById("videoDevices").innerHTML=videoDevices.map((device,index)=>`<option value="${escapeHtml(device.deviceId)}">${escapeHtml(device.label||"Kamera "+(index+1))}</option>`).join("");
+    }
+    async function refreshCallIceServers(){
+      const response=await fetch("/api/public-config");
+      if(!response.ok)throw new Error("Anruf-Netzwerkkonfiguration konnte nicht geladen werden");
+      const config=await response.json();
+      if(!Array.isArray(config.iceServers)||!config.iceServers.length)throw new Error("Anruf-Netzwerkkonfiguration ist ungültig");
+      callIceServers=config.iceServers;
+    }
+    async function openCall(video){
+      if(!activeChatId){notify("Wähle zuerst ein Mitglied");return}
+      if(!navigator.mediaDevices?.getUserMedia){notify("Anrufe benötigen HTTPS oder localhost und Gerätezugriff");return}
+      if(callRoomId){notify("Du bist bereits in einem Anruf");return}
+      try{
+        await refreshCallIceServers();
+        await populateCallDevices();
+        const audioId=document.getElementById("audioDevices").value,videoId=document.getElementById("videoDevices").value;
+        callVideoEnabled=video;
+        callStream=await navigator.mediaDevices.getUserMedia({
+          audio:audioId?{deviceId:{exact:audioId}}:true,
+          video:video?cameraConstraints(videoId):false
+        });
+        callRoomId=crypto.randomUUID?crypto.randomUUID():Array.from(crypto.getRandomValues(new Uint8Array(16)),value=>value.toString(16).padStart(2,"0")).join("");
+        callHostId=currentUser.id;callParticipants=new Set([currentUser.id]);pendingInvites=new Set([activeChatId]);callMuted=false;
+        document.getElementById("callVideo").srcObject=callStream;
+        document.getElementById("callVideo").style.display=video?"block":"none";
+        document.getElementById("videoDevices").style.display=video?"block":"none";
+        document.getElementById("cameraQualityControl").style.display=video?"flex":"none";
+        document.getElementById("callModal").classList.add("open");
+        updateQualityStatus();
+        renderCallParticipants();
+        await sendCallSignal(activeChatId,{type:"start",callId:callRoomId,video});
+        await prepareCallShareLink();
+        notify(`${video?"Video":"Audio"}anruf gestartet`);
+      }catch(error){
+        closeCall();
+        notify(error.name==="NotAllowedError"?"Mikrofon- oder Kamerazugriff wurde verweigert":error.name==="NotFoundError"?"Kein passendes Mikrofon oder keine Kamera gefunden":error.message||"Anruf konnte nicht gestartet werden");
+      }
+    }
+    async function replaceCallTrack(kind){
+      if(!callStream){notify("Kein aktiver Anruf");return}
+      if(kind==="video"&&!callVideoEnabled)return;
+      try{
+        const deviceId=document.getElementById(kind==="audio"?"audioDevices":"videoDevices").value;
+        const constraints=kind==="video"?cameraConstraints(deviceId):deviceId?{deviceId:{exact:deviceId}}:true;
+        const capture=await navigator.mediaDevices.getUserMedia({audio:kind==="audio"?constraints:false,video:kind==="video"?constraints:false});
+        const nextTrack=capture.getTracks()[0];
+        if(!nextTrack)throw new Error("No replacement track");
+        if(kind==="audio")nextTrack.enabled=!callMuted;
+        const oldTrack=(kind==="audio"?callStream.getAudioTracks():callStream.getVideoTracks())[0];
+        await Promise.all([...peerConnections.values()].map(async connection=>{
+          const sender=connection.getSenders().find(item=>item.track?.kind===kind);
+          if(sender)await sender.replaceTrack(nextTrack);
+          else connection.addTrack(nextTrack,callStream);
+        }));
+        if(oldTrack){callStream.removeTrack(oldTrack);oldTrack.stop()}
+        callStream.addTrack(nextTrack);
+        if(kind==="video")updateQualityStatus();
+      }catch(error){
+        notify(error.name==="NotAllowedError"?"Gerätezugriff wurde verweigert":"Gerät oder Qualität wird nicht unterstützt");
+      }
+    }
+    async function applyCameraQuality(){
+      const track=callStream?.getVideoTracks()[0];
+      if(!track){updateQualityStatus();return}
+      try{
+        await track.applyConstraints(cameraProfiles[document.getElementById("videoQuality").value]||{});
+        updateQualityStatus();
+      }catch{
+        updateQualityStatus();
+        notify("Diese Kamera unterstützt die gewählte Qualität nicht");
+      }
+    }
+    document.getElementById("startAudio").addEventListener("click",()=>openCall(false));
+    document.getElementById("startVideo").addEventListener("click",()=>openCall(true));
+    document.getElementById("audioDevices").addEventListener("change",()=>replaceCallTrack("audio"));
+    document.getElementById("videoDevices").addEventListener("change",()=>replaceCallTrack("video"));
+    document.getElementById("videoQuality").addEventListener("change",applyCameraQuality);
+    document.getElementById("toggleMute").addEventListener("click",()=>{
+      if(!callStream)return;
+      callMuted=!callMuted;callStream.getAudioTracks().forEach(track=>track.enabled=!callMuted);
+      const button=document.getElementById("toggleMute");
+      button.textContent=callMuted?"MIKROFON EINSCHALTEN":"MIKROFON STUMMSCHALTEN";
+      button.setAttribute("aria-pressed",String(callMuted));
+    });
+    document.getElementById("inviteCallButton").addEventListener("click",async()=>{
+      const targetId=document.getElementById("callInviteSelect").value;
+      if(!callRoomId||!targetId)return;
+      try{
+        await sendCallSignal(targetId,{type:"invite",callId:callRoomId});
+        pendingInvites.add(targetId);renderCallParticipants();notify(`${participantName(targetId)} wurde eingeladen`);
+      }catch(error){notify(error.message)}
+    });
+    document.getElementById("shareCallWhatsapp").addEventListener("click",()=>{
+      if(!callShareLink){notify("WhatsApp-Link ist noch nicht verfügbar");return}
+      const message=`Twin Signal lädt dich zu einem ${callVideoEnabled?"Video":"Audio"}anruf ein. Öffne den Link und melde dich mit deinem Mitgliedskonto an: ${callShareLink}`;
+      const link=document.createElement("a");
+      link.href=`https://wa.me/?text=${encodeURIComponent(message)}`;link.target="_blank";link.rel="noopener noreferrer";
+      document.body.appendChild(link);link.click();link.remove();
+    });
+    document.getElementById("callParticipants").addEventListener("click",async event=>{
+      const button=event.target.closest("[data-kick-user]");
+      if(!button||currentUser.id!==callHostId)return;
+      const targetId=button.dataset.kickUser;
+      try{await sendCallSignal(targetId,{type:"kick",callId:callRoomId});notify(`${participantName(targetId)} wurde aus dem Anruf entfernt`)}
+      catch(error){notify(error.message)}
+    });
+    function setIncomingInviteOpen(open){
+      const modal=document.getElementById("incomingCall");
+      modal.classList.toggle("open",open);modal.setAttribute("aria-hidden",String(!open));
+    }
+    async function declineIncomingCall(){
+      const invitation=incomingCallInvite;
+      incomingCallInvite=null;setIncomingInviteOpen(false);
+      if(invitation?.linkToken){sharedCallLinkData=null;sharedCallPrompted=false}
+      else if(invitation)try{await sendCallSignal(invitation.hostId,{type:"decline",callId:invitation.callId})}catch(error){notify(error.message)}
+    }
+    async function showSharedCallInvite(){
+      if(!currentUser||!sharedCallLinkData||sharedCallPrompted)return;
+      sharedCallPrompted=true;
+      try{
+        const response=await fetch("/api/call-links/preview",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(sharedCallLinkData)});
+        const data=await response.json().catch(()=>({}));
+        if(!response.ok)throw new Error(data.error||"Anruf-Link ist ungültig oder abgelaufen");
+        incomingCallInvite={...sharedCallLinkData,linkToken:sharedCallLinkData.token,hostId:data.hostId,video:data.video};
+        document.getElementById("incomingCallText").textContent=`${participantName(data.hostId)} lädt dich über WhatsApp zu einem ${data.video?"Video-":"Audio-"}anruf ein.`;
+        setIncomingInviteOpen(true);
+      }catch(error){
+        sharedCallLinkData=null;sharedCallPrompted=false;
+        notify(error.message||"Anruf-Link ist ungültig oder abgelaufen");
+      }
+    }
+    async function acceptIncomingCall(){
+      const invitation=incomingCallInvite;
+      if(!invitation)return;
+      incomingCallInvite=null;setIncomingInviteOpen(false);
+      if(callRoomId){if(!invitation.linkToken)try{await sendCallSignal(invitation.hostId,{type:"decline",callId:invitation.callId})}catch(error){notify(error.message)}notify("Du bist bereits in einem Anruf");return}
+      if(!navigator.mediaDevices?.getUserMedia){notify("Anrufe benötigen HTTPS oder localhost und Gerätezugriff");return}
+      let linkJoined=false;
+      try{
+        await refreshCallIceServers();
+        await populateCallDevices();
+        const audioId=document.getElementById("audioDevices").value,videoId=document.getElementById("videoDevices").value;
+        callVideoEnabled=invitation.video;
+        callStream=await navigator.mediaDevices.getUserMedia({audio:audioId?{deviceId:{exact:audioId}}:true,video:callVideoEnabled?cameraConstraints(videoId):false});
+        callRoomId=invitation.callId;callHostId=invitation.hostId;callParticipants=new Set([currentUser.id]);pendingInvites=new Set();callMuted=false;
+        document.getElementById("callVideo").srcObject=callStream;
+        document.getElementById("callVideo").style.display=callVideoEnabled?"block":"none";
+        document.getElementById("videoDevices").style.display=callVideoEnabled?"block":"none";
+        document.getElementById("cameraQualityControl").style.display=callVideoEnabled?"flex":"none";
+        document.getElementById("callModal").classList.add("open");updateQualityStatus();
+        const joined=invitation.linkToken?await joinCallByLink(invitation):await sendCallSignal(callHostId,{type:"join",callId:callRoomId});
+        linkJoined=Boolean(invitation.linkToken);
+        callHostId=joined.hostId||callHostId;
+        callParticipants=new Set(joined.participants);renderCallParticipants();
+        await Promise.all([...callParticipants].filter(id=>id!==currentUser.id).map(connectToPeer));
+        if(invitation.linkToken){sharedCallLinkData=null;sharedCallPrompted=false}
+        await prepareCallShareLink();
+        notify("Du bist dem Anruf beigetreten");
+      }catch(error){
+        if(callRoomId){
+          if(invitation.linkToken&&!linkJoined){sharedCallLinkData=null;sharedCallPrompted=false}
+          closeCall(!invitation.linkToken||linkJoined);
+        }
+        else{
+          if(invitation.linkToken&&(error.name==="NotAllowedError"||error.name==="NotFoundError")){
+            incomingCallInvite=invitation;sharedCallPrompted=false;setIncomingInviteOpen(true);
+          }else if(invitation.linkToken){sharedCallLinkData=null;sharedCallPrompted=false}
+          else try{await sendCallSignal(invitation.hostId,{type:"decline",callId:invitation.callId})}catch(declineError){notify(declineError.message)}
+          closeCall(false);
+        }
+        notify(error.name==="NotAllowedError"?"Mikrofon- oder Kamerazugriff wurde verweigert":error.name==="NotFoundError"?"Kein passendes Mikrofon oder keine Kamera gefunden":error.message||"Anruf konnte nicht angenommen werden");
+      }
+    }
+    document.getElementById("acceptIncoming").addEventListener("click",acceptIncomingCall);
+    document.getElementById("declineIncoming").addEventListener("click",declineIncomingCall);
+    async function handleIncomingCall(event){
+      const payload=event.payload;
+      if(payload.type==="invite"){
+        if(callRoomId||incomingCallInvite){
+          try{await sendCallSignal(payload.hostId,{type:"decline",callId:payload.callId})}catch(error){notify(error.message)}
+          return;
+        }
+        incomingCallInvite={callId:payload.callId,hostId:payload.hostId,video:Boolean(payload.video)};
+        document.getElementById("incomingCallText").textContent=`${participantName(event.from)} lädt dich zu einem ${payload.video?"Video-":"Audio-"}anruf ein.`;
+        setIncomingInviteOpen(true);
+      }else if(payload.type==="joined"&&payload.callId===callRoomId){
+        callParticipants=new Set(payload.participants);pendingInvites.delete(event.from);renderCallParticipants();
+        await Promise.all([...callParticipants].filter(id=>id!==currentUser.id).map(async id=>{try{await connectToPeer(id)}catch(error){notify(error.message)}}));
+      }else if(payload.type==="declined"&&payload.callId===callRoomId){
+        pendingInvites.delete(payload.userId);renderCallParticipants();notify(`${participantName(payload.userId)} hat abgelehnt`);
+      }else if(payload.type==="left"&&payload.callId===callRoomId){
+        callParticipants.delete(payload.userId);removePeerConnection(payload.userId);renderCallParticipants();
+      }else if(payload.type==="links-revoked"&&payload.callId===callRoomId){
+        callShareLink="";prepareCallShareLink();
+      }else if(payload.type==="removed"&&payload.callId===callRoomId){
+        closeCall(false);notify("Du wurdest aus dem Anruf entfernt");
+      }else if(payload.type==="ended"&&incomingCallInvite?.callId===payload.callId){
+        incomingCallInvite=null;setIncomingInviteOpen(false);notify("Der Anruf wurde beendet");
+      }else if(payload.type==="ended"&&payload.callId===callRoomId){
+        closeCall(false);notify("Der Anruf wurde beendet");
+      }else if(payload.type==="offer"&&payload.callId===callRoomId&&callParticipants.has(event.from)){
+        try{
+          const connection=getPeerConnection(event.from);
+          if(connection.signalingState!=="stable")return;
+          await connection.setRemoteDescription(payload.sdp);await flushCandidates(event.from,connection);
+          const answer=await connection.createAnswer();await connection.setLocalDescription(answer);
+          await sendCallSignal(event.from,{type:"answer",callId:callRoomId,sdp:connection.localDescription});
+        }catch(error){notify(error.message||"Verbindung konnte nicht hergestellt werden")}
+      }else if(payload.type==="answer"&&payload.callId===callRoomId&&peerConnections.has(event.from)){
+        const connection=peerConnections.get(event.from);
+        if(connection.signalingState==="have-local-offer")try{await connection.setRemoteDescription(payload.sdp);await flushCandidates(event.from,connection)}catch(error){notify(error.message)}
+      }else if(payload.type==="ice"&&payload.callId===callRoomId&&callParticipants.has(event.from)&&payload.candidate){
+        const connection=peerConnections.get(event.from);
+        if(connection?.remoteDescription)try{await connection.addIceCandidate(payload.candidate)}catch(error){notify(error.message)}
+        else{const candidates=pendingCandidates.get(event.from)||[];candidates.push(payload.candidate);pendingCandidates.set(event.from,candidates)}
+      }
+    }
+    async function closeCall(notifyServer=true){
+      const roomId=callRoomId,hostId=callHostId,wasHost=currentUser?.id===callHostId;
+      const leaveRequest=notifyServer&&roomId&&hostId?sendCallSignal(hostId,{type:wasHost?"end":"leave",callId:roomId}):null;
+      for(const peerId of [...peerConnections.keys()])removePeerConnection(peerId);
+      if(callStream)callStream.getTracks().forEach(track=>track.stop());
+      callStream=null;callRoomId="";callHostId="";callShareLink="";callParticipants=new Set();pendingInvites=new Set();pendingCandidates.clear();callVideoEnabled=false;callMuted=false;
+      document.getElementById("shareCallWhatsapp").disabled=true;
+      document.getElementById("callModal").classList.remove("open");
+      document.getElementById("callVideo").srcObject=null;document.getElementById("callStreams").replaceChildren();
+      document.getElementById("cameraQualityControl").style.display="none";document.getElementById("videoDevices").style.display="block";
+      const muteButton=document.getElementById("toggleMute");muteButton.textContent="MIKROFON STUMMSCHALTEN";muteButton.setAttribute("aria-pressed","false");
+      document.getElementById("callParticipants").innerHTML="";
+      if(leaveRequest)try{await leaveRequest}catch(error){notify(error.message)}
+    }
+    document.getElementById("endCall").addEventListener("click",()=>closeCall());
+    document.getElementById("closeCall").addEventListener("click",()=>closeCall());
+    if(sharedCallLinkData){
+      fetch("/api/me").then(async response=>{
+        if(!response.ok){authModal.classList.add("open");return}
+        const data=await response.json();currentUser=data.user;openPortal();
+      }).catch(()=>{authModal.classList.add("open")});
+    }
+  </script>
+</body>
+</html>
